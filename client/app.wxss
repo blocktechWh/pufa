@@ -1,0 +1,137 @@
+/** 通用样式 **/
+page{
+  background-color: #FAFAFA; 
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+.flex{
+  display: flex;
+  align-items: center;
+}
+.flex-h{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.flex-v{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flex1{
+  flex: 1;
+}
+
+.fullWidth{
+  width: 750rpx;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 0;
+}
+.right{
+  position: absolute;
+  right: 0;
+}
+
+.fz-11{
+  font-size: 22rpx;
+}
+.fz-12{
+  font-size: 24rpx;
+}
+.fz-14{
+  font-size: 28rpx;
+}
+.fz-15{
+  font-size: 30rpx;
+}
+.fz-16{
+  font-size: 32rpx;
+}
+
+.mt-15{
+  margin-top: 30rpx;
+}
+
+text.underline{
+  text-decoration: underline;
+}
+input.underline{
+  border-bottom: solid 1px #DBDBDB;
+}
+view.underline{
+  border-bottom: solid 1px #DBDBDB;
+}
+.input{
+  height: 110rpx;
+  padding-left: 40rpx;
+  font-size: 24rpx;
+  background: #FFFFFF;
+}
+
+.btn{
+  height: 110rpx;
+  line-height: 110rpx;
+  border-radius: 5px;
+  border:solid 1px #D1D1D1;
+  margin: 40rpx;
+  text-align: center;
+  color: #666666;
+}
+.btn.blue{
+  background: #36AFDF;
+  color: #FFF;
+  border:none;
+}
+.btn.black{
+  background: #000000;
+  color: #FFF;
+}
+
+view.blue{
+  background: #36AFDF;
+}
+text.blue{
+  color: #36AFDF;
+}
+
+/* 公共样式  */
+.header{
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+.header .userName{
+  margin-top: 20rpx;
+}
+.header .header_top_rect{
+  background:#36AFDF;
+  width:750rpx;
+  height:120rpx;
+}
+.header .avatar_container{
+  width: 750rpx;
+  height: 150rpx;
+  position: relative;
+}
+.header .avatar_container image{
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.header .avatar_container .userAvatar{
+  border-radius: 50%;
+  width: 180rpx;
+  height: 180rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
