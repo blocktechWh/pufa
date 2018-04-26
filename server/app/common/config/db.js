@@ -23,4 +23,3 @@ exports.default = {
   }
 };
 module.exports = exports['default'];
-//# sourceMappingURL=db.js.map

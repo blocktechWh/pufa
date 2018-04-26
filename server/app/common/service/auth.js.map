@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/common/service/auth.js"
+    ],
+    "names": [
+        "jwt",
+        "require",
+        "conf",
+        "getUserId",
+        "token",
+        "decoded",
+        "verify",
+        "jwtSecret",
+        "id"
+    ],
+    "mappings": "AAAA;;;AAEA,IAAMA,MAAMC,QAAQ,cAAR,CAAZ;AACA,IAAMC,OAAOD,QAAQ,oBAAR,CAAb;;kBAEe;AACbE,aAAU,mBAASC,KAAT,EAAe;AACvB,QAAGA,KAAH,EAAS;AACP,UAAMC,UAAUL,IAAIM,MAAJ,CAAWF,KAAX,EAAkBF,KAAKK,SAAvB,CAAhB;AACA,aAAOF,QAAQG,EAAf;AACD,KAHD,MAGK;AACH,aAAO,IAAP;AACD;AACF;AARY,C",
+    "file": "../../../src/common/service/auth.js",
+    "sourcesContent": [
+        "'use strict';\n\nconst jwt = require('jsonwebtoken')\nconst conf = require('../../../config.js')\n\nexport default {\n  getUserId:function(token){\n    if(token){\n      const decoded = jwt.verify(token, conf.jwtSecret);\n      return decoded.id;\n    }else{\n      return null;\n    }\n  }\n}"
+    ]
+}

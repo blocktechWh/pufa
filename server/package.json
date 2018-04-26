@@ -3,7 +3,8 @@
   "description": "pufa server",
   "version": "1.0.0",
   "scripts": {
-    "start": "NODE_ENV=development node app.js",
+    "start": "pm2 start process.prod.json --no-daemon",
+    "dev": "NODE_ENV=development node app.js",
     "compile": "babel src/ --out-dir app/",
     "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
     "watch": "npm run watch-compile"
@@ -12,11 +13,14 @@
     "thinkjs": "v2",
     "babel-runtime": "6.x.x",
     "source-map-support": "0.4.0",
+    "axios": "^0.15.3",
+    "jsonwebtoken": "^8.1.0",
     "wafer-node-sdk": "^1.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-1": "^6.16.0"

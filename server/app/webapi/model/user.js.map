@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/webapi/model/user.js"
+    ],
+    "names": [
+        "init",
+        "args",
+        "tableName",
+        "think",
+        "model",
+        "base"
+    ],
+    "mappings": "AAAA;AACA;;;;;;;;;;;;;;;;;;;;;;;;;;;;qBAIIA,I,mBAAa;AAAA;;AAAA,0CAALC,IAAK;AAALA,gBAAK;AAAA;;AACT,6DAAMD,IAAN,kDAAcC,IAAd;AACA,aAAKC,SAAL,GAAiB,OAAjB;AACH,K;;;EAJwBC,MAAMC,KAAN,CAAYC,I",
+    "file": "../../../src/webapi/model/user.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * model\n */\nexport default class extends think.model.base {\n    init(...args){\n        super.init(...args);\n        this.tableName = 'mUser';\n    }\n}"
+    ]
+}
