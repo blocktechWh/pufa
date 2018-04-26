@@ -8,8 +8,8 @@ const CONF = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    db: '',
-    pass: '',
+    db: 'pufa',
+    pass: 'wxdf98b3bc862bda45',
     char: 'utf8mb4'
   },
   cos: {
