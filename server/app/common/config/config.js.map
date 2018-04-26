@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/common/config/config.js"
+    ],
+    "names": [
+        "conf",
+        "require",
+        "port",
+        "deny_module_list"
+    ],
+    "mappings": "AAAA;AACA;;;;;AAGA,IAAMA,OAAOC,QAAQ,oBAAR,CAAb;;kBAEe;AACbC,QAAMF,KAAKE,IADE;AAEbC,oBAAiB,CAAC,MAAD;AAFJ,C",
+    "file": "../../../src/common/config/config.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * config\n */\nconst conf = require('../../../config.js')\n\nexport default {\n  port: conf.port,\n  deny_module_list:['home']\n};"
+    ]
+}
