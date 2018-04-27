@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/webapi/controller/lottery.js"
+    ],
+    "names": [
+        "init",
+        "http",
+        "_isRest",
+        "currentAction",
+        "userId",
+        "think",
+        "service",
+        "getUserId",
+        "data",
+        "modelInstance",
+        "where",
+        "owner",
+        "select",
+        "success",
+        "controller",
+        "rest"
+    ],
+    "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;mBAIEA,I,iBAAKC,I,EAAK;AACR,oCAAMD,IAAN,YAAWC,IAAX;AACA,SAAKC,OAAL,GAAe,KAAf;AACD,G;;mBAEDC,a,4BAAe;AACb,QAAIC,SAASC,MAAMC,OAAN,CAAc,MAAd,EAAsBC,SAAtB,CAAgC,IAAhC,CAAb;AACA,QAAG,CAACH,MAAJ,EAAW;AACX,QAAII,OAAO,KAAKC,aAAL,CAAmBC,KAAnB,CAAyB,EAACC,OAAOP,MAAR,EAAzB,EAA0CQ,MAA1C,EAAX;AACA,WAAO,KAAKC,OAAL,CAAa,EAACL,UAAD,EAAb,CAAP;AACD,G;;;EAZ0BH,MAAMS,UAAN,CAAiBC,I",
+    "file": "../../../src/webapi/controller/lottery.js",
+    "sourcesContent": [
+        "'use strict';\n\nexport default class extends think.controller.rest {\n  \n  init(http){\n    super.init(http);\n    this._isRest = false;\n  }\n\n  currentAction(){\n    let userId = think.service('auth').getUserId(this)\n    if(!userId)return;\n    let data = this.modelInstance.where({owner: userId}).select()\n    return this.success({data});\n  }\n\n}"
+    ]
+}

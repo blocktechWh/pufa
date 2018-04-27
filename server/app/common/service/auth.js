@@ -5,12 +5,13 @@ var jwt = require('jsonwebtoken');
 var conf = require('../../../config.js');
 
 exports.default = {
-  getUserId: function getUserId(token) {
-    if (token) {
+  getUserId: function getUserId(controllerInstance) {
+    var token = controllerInstance.header('token');
+    try {
       var decoded = jwt.verify(token, conf.jwtSecret);
       return decoded.id;
-    } else {
-      return null;
+    } catch (error) {
+      controllerInstance.fail('token无效');
     }
   }
 };

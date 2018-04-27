@@ -4,39 +4,23 @@ const axios = require('axios')
 const conf = require('../../../config.js')
 const jwt = require('jsonwebtoken')
 
-/**
- * rest controller
- * @type {Class}
- */
 export default class extends think.controller.rest {
-  /**
-   * init
-   * @param  {Object} http []
-   * @return {}      []
-   */
+  
   init(http){
     super.init(http);
     this._isRest = false;
   }
   
-  /**
-   * before magic method
-   * @return {Promise} []
-   */
   __before(){
     this.modelInstance.fieldReverse('password,open_id,session_key');
   }
 
   //获取用户信息
   async infoAction(){
-    let auth = think.service('auth'); 
-    let userId = auth.getUserId(this.header('token'))
-    if(userId){
-      let data = await this.modelInstance.find({u_id:userId});
-      return this.success(data);
-    }else{
-      return this.fail('token无效');
-    }
+    let userId = think.service('auth').getUserId(this)
+    if(!userId)return;
+    let data = await this.modelInstance.find({u_id:userId});
+    return this.success(data);
   }
 
   //添加用户

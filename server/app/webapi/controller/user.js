@@ -28,11 +28,6 @@ var axios = require('axios');
 var conf = require('../../../config.js');
 var jwt = require('jsonwebtoken');
 
-/**
- * rest controller
- * @type {Class}
- */
-
 var _class = function (_think$controller$res) {
   (0, _inherits3.default)(_class, _think$controller$res);
 
@@ -41,21 +36,10 @@ var _class = function (_think$controller$res) {
     return (0, _possibleConstructorReturn3.default)(this, _think$controller$res.apply(this, arguments));
   }
 
-  /**
-   * init
-   * @param  {Object} http []
-   * @return {}      []
-   */
   _class.prototype.init = function init(http) {
     _think$controller$res.prototype.init.call(this, http);
     this._isRest = false;
   };
-
-  /**
-   * before magic method
-   * @return {Promise} []
-   */
-
 
   _class.prototype.__before = function __before() {
     this.modelInstance.fieldReverse('password,open_id,session_key');
@@ -66,19 +50,21 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.infoAction = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-      var auth, userId, data;
+      var userId, data;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              auth = think.service('auth');
-              userId = auth.getUserId(this.header('token'));
+              userId = think.service('auth').getUserId(this);
 
-              if (!userId) {
-                _context.next = 9;
+              if (userId) {
+                _context.next = 3;
                 break;
               }
 
+              return _context.abrupt('return');
+
+            case 3:
               _context.next = 5;
               return this.modelInstance.find({ u_id: userId });
 
@@ -86,10 +72,7 @@ var _class = function (_think$controller$res) {
               data = _context.sent;
               return _context.abrupt('return', this.success(data));
 
-            case 9:
-              return _context.abrupt('return', this.fail('token无效'));
-
-            case 10:
+            case 7:
             case 'end':
               return _context.stop();
           }
