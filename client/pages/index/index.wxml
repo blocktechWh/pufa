@@ -1,2 +1,42 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class="page">
+  <view class='index-header'>
+    <image src='../../resource/images/header-bac.png'></image>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap='example'></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text class="my-integral">我的积分：100</text>
+  </view>
+  <view class='{{index_content}}' style='height:{{conH+"rpx"}}'>
+    <view class='index-content-one'>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/signIn/signIn'>
+        <image src='../../resource/images/sign_in_icon.png' style='margin-top:92rpx'></image>
+      </navigator>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}'>
+        <image src='../../resource/images/my_prize_icon.png' style='margin-top:92rpx'></image>
+      </navigator>
+    </view>
+    <view class='index-content-two'>
+      <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
+        <image src='../../resource/images/extension_award_icon.png' style='margin-top:36rpx'></image>
+      </navigator>
+      <navigator class='menu-box menu-box-three'>
+        <image src='../../resource/images/luck_draw_icon.png' style='margin-top:36rpx'></image>
+      </navigator>
+      <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
+        <image src='../../resource/images/Invitation_icon.png' style='margin-top:36rpx'></image>
+      </navigator>
+    </view>
+    <view class='index-content-three'>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}'>
+        <image src='../../resource/images/luck_draw_history_icon.png' style='margin-top:92rpx'></image>
+      </navigator>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}' bindtap='getMoreJiFen'>
+        <image src='../../resource/images/get_more_jifen.png' style='margin-top:92rpx'></image>
+      </navigator>
+    </view>
+    <view class='clear'></view>
+  </view>
+  <view class='index-footer'>
+  <image src='../../resource/images/apply_button.png'></image>
+    <image src='../../resource/images/bottom_image.png'></image>
+  </view>
+</view>

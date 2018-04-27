@@ -1,0 +1,44 @@
+/* pages/signIn/signIn.wxss */
+.calendar-box{
+  height: 696rpx;
+  background-color: #446dff;
+  color: #fff;
+  padding: 68rpx 7.5rpx;
+  margin: 0  auto;
+  font-size: 34rpx;
+}
+.date-of-today{
+  font-size: 34rpx;
+  text-align: center;
+
+}
+.week-group{
+  margin-top: 46rpx;
+  font-size: 34rpx;
+  height: 105rpx;
+}
+.week-group>view{
+  float: left;
+  width: 105rpx;
+  height: 98rpx;
+  font-size: 34rpx;
+  line-height: 98rpx;
+  text-align: center;
+}
+.dates-group>view{
+  float: left;
+  width: 105rpx;
+  height: 82rpx;
+  font-size: 34rpx;
+  line-height: 82rpx;
+  text-align: center;
+}
+.signed-circle{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 19rpx auto;
+  background-color: #ffbb00;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+}

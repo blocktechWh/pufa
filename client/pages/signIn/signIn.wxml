@@ -1,0 +1,44 @@
+<!--pages/signIn/signIn.wxml-->
+<view class="page">
+  <view class='calendar-box'>
+    <view class='date-of-today'>
+      <text>2018-4-26</text>
+    </view>
+    <view class='week-group'>
+      <view>
+        <text>天</text>
+      </view>
+      <view>
+        <text>一</text>
+      </view>
+      <view>
+        <text>二</text>
+      </view>
+      <view>
+        <text>三</text>
+      </view>
+      <view>
+        <text>四</text>
+      </view>
+      <view>
+        <text>五</text>
+      </view>
+      <view>
+        <text>六</text>
+      </view>
+    </view>
+    <view class='dates-group'>
+      <block wx:for="{{dates}}">
+        <view wx:if="{{item==='12'}}" style='position:relative'>
+          <view class='signed-circle'>
+            <text>{{item}}</text>
+          </view>
+        </view>
+        <view wx:else>
+          <text>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+</view>

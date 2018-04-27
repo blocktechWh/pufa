@@ -1,6 +1,22 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/steps/steps",
+    "weui/dist/example/progress/progress",
+    "pages/signIn/signIn",
+    "weui/dist/example/grid/grid",
+    "pages/user/user",
+    "pages/actions/actions",
+    "pages/detail2/detail2",
+    
+    "pages/results/results",
+    "pages/updateActivities/updateActivities"
   ],
-  "window": {}
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#597bff",
+    "navigationBarTitleText": "浦天同乐",
+    "navigationBarTextStyle": "white"
+  }
+
 }

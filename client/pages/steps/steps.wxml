@@ -1,0 +1,39 @@
+<view class="page">
+  <view class='index-header'>
+    <image src='../../resource/images/header-bac.png'></image>
+  </view>
+  <view class='tab-box'>
+    <view class='step-info'>
+      <view class="container">
+        <view class='progress_box'>
+          <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+          <canvas class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+          <view class="progress_text">
+            <view class='steps-title'>
+              <text>今日步数</text>
+            </view>
+            <view class='progress_info'>
+              <text> {{progress_txt}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='left-steps-text'>
+        <text>剩余步数：4000步</text>
+      </view>
+      <view class='step-button'>
+        <button>未完成</button>
+      </view>
+
+
+    </view>
+    <view class='step-tab-buttons'>
+      <view>
+        <text>今日步数</text>
+      </view>
+      <view>
+        <text>历史步数</text>
+      </view>
+    </view>
+  </view>
+</view>
