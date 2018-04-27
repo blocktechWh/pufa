@@ -29,7 +29,7 @@ var _class = function (_think$logic$base) {
     return (0, _possibleConstructorReturn3.default)(this, _think$logic$base.apply(this, arguments));
   }
 
-  _class.prototype.getAction = function getAction() {
+  _class.prototype.infoAction = function infoAction() {
     var rules = {
       token: {
         required: true,
@@ -42,7 +42,7 @@ var _class = function (_think$logic$base) {
     }
   };
 
-  _class.prototype.postAction = function postAction() {
+  _class.prototype.loginAction = function loginAction() {
     var rules = {
       code: "string|required",
       nickName: "string|maxLength:100|required",

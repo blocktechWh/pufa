@@ -16,7 +16,9 @@ export default class extends think.controller.rest {
    */
   init(http){
     super.init(http);
+    this._isRest = false;
   }
+  
   /**
    * before magic method
    * @return {Promise} []
@@ -26,7 +28,7 @@ export default class extends think.controller.rest {
   }
 
   //获取用户信息
-  async getAction(){
+  async infoAction(){
     let auth = think.service('auth'); 
     let userId = auth.getUserId(this.header('token'))
     if(userId){
@@ -38,7 +40,7 @@ export default class extends think.controller.rest {
   }
 
   //添加用户
-  async postAction(){
+  async loginAction(){
     let { code, nickName, avatarUrl } = this.post();
     const url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' +
       conf.appId + '&secret=' + conf.appSecret + '&js_code=' + code + '&grant_type=authorization_code'
@@ -50,16 +52,6 @@ export default class extends think.controller.rest {
     let insertId = await this.modelInstance.thenAdd({name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key},{open_id: openid});
     const token = jwt.sign({ id: insertId.u_id }, conf.jwtSecret, { expiresIn: '7d' })
     return this.success({token});
-  }
-
-  //不允许删除
-  async deleteAction(){
-    return this.deny();
-  }
-
-  //不允许更新
-  async putAction(){
-    return this.deny();
   }
 
 }

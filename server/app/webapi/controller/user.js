@@ -48,7 +48,9 @@ var _class = function (_think$controller$res) {
    */
   _class.prototype.init = function init(http) {
     _think$controller$res.prototype.init.call(this, http);
+    this._isRest = false;
   };
+
   /**
    * before magic method
    * @return {Promise} []
@@ -59,7 +61,10 @@ var _class = function (_think$controller$res) {
     this.modelInstance.fieldReverse('password,open_id,session_key');
   };
 
-  _class.prototype.getAction = function () {
+  //获取用户信息
+
+
+  _class.prototype.infoAction = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
       var auth, userId, data;
       return _regenerator2.default.wrap(function _callee$(_context) {
@@ -92,17 +97,17 @@ var _class = function (_think$controller$res) {
       }, _callee, this);
     }));
 
-    function getAction() {
+    function infoAction() {
       return _ref.apply(this, arguments);
     }
 
-    return getAction;
+    return infoAction;
   }();
 
   //添加用户
 
 
-  _class.prototype.postAction = function () {
+  _class.prototype.loginAction = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
       var _post, code, nickName, avatarUrl, url, res, _res$data, openid, session_key, insertId, token;
 
@@ -143,63 +148,11 @@ var _class = function (_think$controller$res) {
       }, _callee2, this);
     }));
 
-    function postAction() {
+    function loginAction() {
       return _ref2.apply(this, arguments);
     }
 
-    return postAction;
-  }();
-
-  //不允许删除
-
-
-  _class.prototype.deleteAction = function () {
-    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-      return _regenerator2.default.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              return _context3.abrupt('return', this.deny());
-
-            case 1:
-            case 'end':
-              return _context3.stop();
-          }
-        }
-      }, _callee3, this);
-    }));
-
-    function deleteAction() {
-      return _ref3.apply(this, arguments);
-    }
-
-    return deleteAction;
-  }();
-
-  //不允许更新
-
-
-  _class.prototype.putAction = function () {
-    var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
-      return _regenerator2.default.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              return _context4.abrupt('return', this.deny());
-
-            case 1:
-            case 'end':
-              return _context4.stop();
-          }
-        }
-      }, _callee4, this);
-    }));
-
-    function putAction() {
-      return _ref4.apply(this, arguments);
-    }
-
-    return putAction;
+    return loginAction;
   }();
 
   return _class;

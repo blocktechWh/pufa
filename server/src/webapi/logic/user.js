@@ -6,7 +6,7 @@
  */
 export default class extends think.logic.base {
   
-  getAction(){
+  infoAction(){
     let rules = {
       token: {
         required: true,
@@ -19,7 +19,7 @@ export default class extends think.logic.base {
     }
   }
 
-  postAction(){
+  loginAction(){
     let rules = {
       code: "string|required",
       nickName: "string|maxLength:100|required",
