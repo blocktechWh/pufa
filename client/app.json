@@ -2,9 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/steps/steps",
-    "weui/dist/example/progress/progress",
     "pages/signIn/signIn",
-    "weui/dist/example/grid/grid",
     "pages/user/user",
     "pages/actions/actions",
     "pages/detail2/detail2",
