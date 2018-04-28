@@ -24,10 +24,6 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var axios = require('axios');
-var conf = require('../../../config.js');
-var jwt = require('jsonwebtoken');
-
 var _class = function (_think$controller$res) {
   (0, _inherits3.default)(_class, _think$controller$res);
 
@@ -41,37 +37,31 @@ var _class = function (_think$controller$res) {
     this._isRest = false;
   };
 
-  _class.prototype.__before = function __before() {
-    this.modelInstance.fieldReverse('password,open_id,session_key');
-  };
-
-  //获取用户信息
-
-
-  _class.prototype.infoAction = function () {
+  _class.prototype.currentAction = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-      var user;
+      var userId, currentLotteryInfo;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return think.service('auth').getUser(this);
+              userId = think.service('auth').getUser(this);
 
-            case 2:
-              user = _context.sent;
-
-              if (user) {
-                _context.next = 5;
+              if (userId) {
+                _context.next = 3;
                 break;
               }
 
               return _context.abrupt('return');
 
-            case 5:
-              return _context.abrupt('return', this.success(user));
+            case 3:
+              _context.next = 5;
+              return this.modelInstance.where({ 'owner': userId }).select();
 
-            case 6:
+            case 5:
+              currentLotteryInfo = _context.sent;
+              return _context.abrupt('return', this.success(currentLotteryInfo));
+
+            case 7:
             case 'end':
               return _context.stop();
           }
@@ -79,50 +69,19 @@ var _class = function (_think$controller$res) {
       }, _callee, this);
     }));
 
-    function infoAction() {
+    function currentAction() {
       return _ref.apply(this, arguments);
     }
 
-    return infoAction;
+    return currentAction;
   }();
 
-  //添加用户
-
-
-  _class.prototype.loginAction = function () {
+  _class.prototype.joinAction = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-      var _post, code, nickName, avatarUrl, url, res, _res$data, openid, session_key, insertId, token;
-
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _post = this.post(), code = _post.code, nickName = _post.nickName, avatarUrl = _post.avatarUrl;
-              url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + conf.appId + '&secret=' + conf.appSecret + '&js_code=' + code + '&grant_type=authorization_code';
-              _context2.next = 4;
-              return axios.get(url);
-
-            case 4:
-              res = _context2.sent;
-              _res$data = res.data, openid = _res$data.openid, session_key = _res$data.session_key;
-
-              if (openid) {
-                _context2.next = 8;
-                break;
-              }
-
-              return _context2.abrupt('return', this.fail('code无效'));
-
-            case 8:
-              _context2.next = 10;
-              return this.modelInstance.thenAdd({ name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key }, { open_id: openid });
-
-            case 10:
-              insertId = _context2.sent;
-              token = jwt.sign({ id: insertId.u_id }, conf.jwtSecret, { expiresIn: '7d' });
-              return _context2.abrupt('return', this.success({ token: token }));
-
-            case 13:
             case 'end':
               return _context2.stop();
           }
@@ -130,11 +89,11 @@ var _class = function (_think$controller$res) {
       }, _callee2, this);
     }));
 
-    function loginAction() {
+    function joinAction() {
       return _ref2.apply(this, arguments);
     }
 
-    return loginAction;
+    return joinAction;
   }();
 
   return _class;

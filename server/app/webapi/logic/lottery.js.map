@@ -1,0 +1,26 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/webapi/logic/lottery.js"
+    ],
+    "names": [
+        "currentAction",
+        "rules",
+        "token",
+        "required",
+        "value",
+        "header",
+        "flag",
+        "validate",
+        "fail",
+        "errors",
+        "think",
+        "logic",
+        "base"
+    ],
+    "mappings": "AAAA;AACA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;mBAOEA,a,4BAAe;AACb,QAAIC,QAAQ;AACVC,aAAO;AACLC,kBAAU,IADL;AAELC,eAAO,KAAKC,MAAL,CAAY,OAAZ;AAFF;AADG,KAAZ;AAMA,QAAIC,OAAO,KAAKC,QAAL,CAAcN,KAAd,CAAX;AACA,QAAG,CAACK,IAAJ,EAAS;AACP,aAAO,KAAKE,IAAL,CAAU,gBAAV,EAA4B,KAAKC,MAAL,EAA5B,CAAP;AACD;AACF,G;;;EAb0BC,MAAMC,KAAN,CAAYC,I",
+    "file": "../../../src/webapi/logic/lottery.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * logic\n * @param  {} []\n * @return {}     []\n */\nexport default class extends think.logic.base {\n  \n  currentAction(){\n    let rules = {\n      token: {\n        required: true,\n        value: this.header('token')\n      }\n    }\n    let flag = this.validate(rules);\n    if(!flag){\n      return this.fail('validate error', this.errors());\n    }\n  }\n\n}"
+    ]
+}

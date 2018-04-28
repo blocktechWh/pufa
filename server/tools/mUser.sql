@@ -11,6 +11,7 @@ CREATE TABLE `mUser` (
   `password` varchar(100) COLLATE utf8mb4_unicode_ci,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci,
   `image_url` varchar(1024) COLLATE utf8mb4_unicode_ci,
+  `point` mediumint(9) NOT NULL DEFAULT 0,
   `open_id` varchar(100) COLLATE utf8mb4_unicode_ci,
   `session_key` varchar(100) COLLATE utf8mb4_unicode_ci,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

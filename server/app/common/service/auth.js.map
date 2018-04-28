@@ -8,15 +8,19 @@
         "require",
         "conf",
         "getUserId",
+        "controllerInstance",
         "token",
+        "header",
         "decoded",
         "verify",
         "jwtSecret",
-        "id"
+        "id",
+        "error",
+        "fail"
     ],
-    "mappings": "AAAA;;;AAEA,IAAMA,MAAMC,QAAQ,cAAR,CAAZ;AACA,IAAMC,OAAOD,QAAQ,oBAAR,CAAb;;kBAEe;AACbE,aAAU,mBAASC,KAAT,EAAe;AACvB,QAAGA,KAAH,EAAS;AACP,UAAMC,UAAUL,IAAIM,MAAJ,CAAWF,KAAX,EAAkBF,KAAKK,SAAvB,CAAhB;AACA,aAAOF,QAAQG,EAAf;AACD,KAHD,MAGK;AACH,aAAO,IAAP;AACD;AACF;AARY,C",
+    "mappings": "AAAA;;;AAEA,IAAMA,MAAMC,QAAQ,cAAR,CAAZ;AACA,IAAMC,OAAOD,QAAQ,oBAAR,CAAb;;kBAEe;AACbE,aAAU,mBAASC,kBAAT,EAA4B;AACpC,QAAIC,QAAQD,mBAAmBE,MAAnB,CAA0B,OAA1B,CAAZ;AACA,QAAI;AACF,UAAMC,UAAUP,IAAIQ,MAAJ,CAAWH,KAAX,EAAkBH,KAAKO,SAAvB,CAAhB;AACA,aAAOF,QAAQG,EAAf;AACD,KAHD,CAGE,OAAOC,KAAP,EAAc;AACdP,yBAAmBQ,IAAnB,CAAwB,SAAxB;AACD;AACF;AATY,C",
     "file": "../../../src/common/service/auth.js",
     "sourcesContent": [
-        "'use strict';\n\nconst jwt = require('jsonwebtoken')\nconst conf = require('../../../config.js')\n\nexport default {\n  getUserId:function(token){\n    if(token){\n      const decoded = jwt.verify(token, conf.jwtSecret);\n      return decoded.id;\n    }else{\n      return null;\n    }\n  }\n}"
+        "'use strict';\n\nconst jwt = require('jsonwebtoken')\nconst conf = require('../../../config.js')\n\nexport default {\n  getUserId:function(controllerInstance){\n    let token = controllerInstance.header('token')\n    try {\n      const decoded = jwt.verify(token, conf.jwtSecret);\n      return decoded.id\n    } catch (error) {\n      controllerInstance.fail('token无效');\n    }\n  }\n}"
     ]
 }

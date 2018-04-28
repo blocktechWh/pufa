@@ -6,11 +6,12 @@
  */
 export default class extends think.logic.base {
   
-  loginAction(){
+  currentAction(){
     let rules = {
-      code: "string|required",
-      nickName: "string|maxLength:100|required",
-      avatarUrl: "string|url|required"
+      token: {
+        required: true,
+        value: this.header('token')
+      }
     }
     let flag = this.validate(rules);
     if(!flag){

@@ -7,15 +7,15 @@
 
 exports.__esModule = true;
 
-var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = require("babel-runtime/helpers/inherits");
+var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -29,11 +29,12 @@ var _class = function (_think$logic$base) {
     return (0, _possibleConstructorReturn3.default)(this, _think$logic$base.apply(this, arguments));
   }
 
-  _class.prototype.loginAction = function loginAction() {
+  _class.prototype.currentAction = function currentAction() {
     var rules = {
-      code: "string|required",
-      nickName: "string|maxLength:100|required",
-      avatarUrl: "string|url|required"
+      token: {
+        required: true,
+        value: this.header('token')
+      }
     };
     var flag = this.validate(rules);
     if (!flag) {
@@ -45,4 +46,4 @@ var _class = function (_think$logic$base) {
 }(think.logic.base);
 
 exports.default = _class;
-module.exports = exports["default"];
+module.exports = exports['default'];
