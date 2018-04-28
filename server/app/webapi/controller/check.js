@@ -63,7 +63,7 @@ var _class = function (_think$controller$res) {
               checkInfo = _context.sent;
 
               if (!think.isEmpty(checkInfo)) {
-                _context.next = 11;
+                _context.next = 13;
                 break;
               }
 
@@ -71,49 +71,61 @@ var _class = function (_think$controller$res) {
               return this.modelInstance.add({ user_id: userId, check_times: 1, check_times_total: 1 });
 
             case 9:
-              _context.next = 26;
-              break;
+              _context.next = 11;
+              return this.model('checklog').add({ user_id: userId });
 
             case 11:
+              _context.next = 32;
+              break;
+
+            case 13:
               dateService = think.service('date');
               last_visit_date = new Date(checkInfo.last_visit_time);
 
               if (!dateService.isToday(last_visit_date)) {
-                _context.next = 17;
+                _context.next = 19;
                 break;
               }
 
               return _context.abrupt('return', this.fail('今天已经签到过了'));
 
-            case 17:
+            case 19:
               if (!dateService.isYestday(last_visit_date)) {
-                _context.next = 24;
+                _context.next = 28;
                 break;
               }
 
               check_times = checkInfo.check_times === 6 ? 0 : checkInfo.check_times + 1; //7天清零
 
               check_times_total = checkInfo.check_times_total + 1;
-              _context.next = 22;
+              _context.next = 24;
               return this.modelInstance.update({ check_times: check_times, check_times_total: check_times_total, last_visit_time: new Date() }, { user_id: userId });
-
-            case 22:
-              _context.next = 26;
-              break;
 
             case 24:
               _context.next = 26;
-              return this.modelInstance.update({ check_times: 1, check_times_total: 1, last_visit_time: new Date() }, { user_id: userId });
+              return this.model('checklog').add({ user_id: userId });
 
             case 26:
-              _context.next = 28;
-              return this.modelInstance.where({ user_id: userId }).getField('check_times,check_times_total,last_visit_time', true);
+              _context.next = 32;
+              break;
 
             case 28:
+              _context.next = 30;
+              return this.modelInstance.update({ check_times: 1, check_times_total: 1, last_visit_time: new Date() }, { user_id: userId });
+
+            case 30:
+              _context.next = 32;
+              return this.model('checklog').add({ user_id: userId });
+
+            case 32:
+              _context.next = 34;
+              return this.modelInstance.where({ user_id: userId }).getField('check_times,check_times_total,last_visit_time', true);
+
+            case 34:
               checkInfo = _context.sent;
               return _context.abrupt('return', this.success({ checkInfo: checkInfo }));
 
-            case 30:
+            case 36:
             case 'end':
               return _context.stop();
           }
@@ -130,7 +142,8 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.historyAction = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-      var userId;
+      var userId, _post, year, month, MonthHis;
+
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -145,6 +158,15 @@ var _class = function (_think$controller$res) {
               return _context2.abrupt('return');
 
             case 3:
+              _post = this.post(), year = _post.year, month = _post.month;
+              _context2.next = 6;
+              return this.model('checklog').where('DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
+
+            case 6:
+              MonthHis = _context2.sent;
+              return _context2.abrupt('return', this.success(MonthHis));
+
+            case 8:
             case 'end':
               return _context2.stop();
           }

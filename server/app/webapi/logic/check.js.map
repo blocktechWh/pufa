@@ -1,0 +1,27 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/webapi/logic/check.js"
+    ],
+    "names": [
+        "indexAction",
+        "historyAction",
+        "rules",
+        "year",
+        "required",
+        "regexp",
+        "month",
+        "flag",
+        "validate",
+        "fail",
+        "errors",
+        "think",
+        "logic",
+        "base"
+    ],
+    "mappings": "AAAA;AACA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAME;;;;mBAIAA,W,0BAAa,CAEZ,C;;mBAEDC,a,4BAAe;AACb,QAAIC,QAAQ;AACVC,YAAM;AACJC,kBAAU,IADN;AAEJC,gBAAQ;AAFJ,OADI;AAKVC,aAAO;AACLF,kBAAU,IADL;AAELC,gBAAQ;AAFH;AALG,KAAZ;AAUA,QAAIE,OAAO,KAAKC,QAAL,CAAcN,KAAd,CAAX;AACA,QAAG,CAACK,IAAJ,EAAS;AACP,aAAO,KAAKE,IAAL,CAAU,gBAAV,EAA4B,KAAKC,MAAL,EAA5B,CAAP;AACD;AACF,G;;;EAxB0BC,MAAMC,KAAN,CAAYC,I",
+    "file": "../../../src/webapi/logic/check.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * logic\n * @param  {} []\n * @return {}     []\n */\nexport default class extends think.logic.base {\n  /**\n   * index action logic\n   * @return {} []\n   */\n  indexAction(){\n   \n  }\n\n  historyAction(){\n    let rules = {\n      year: {\n        required: true,\n        regexp: /^\\d{4}$/\n      },\n      month: {\n        required: true,\n        regexp: /^\\d{2}$/\n      },\n    }\n    let flag = this.validate(rules);\n    if(!flag){\n      return this.fail('validate error', this.errors());\n    }\n  }\n\n}"
+    ]
+}

@@ -17,6 +17,7 @@ export default class extends think.controller.rest {
     let checkInfo = await this.modelInstance.find({user_id:userId});
     if(think.isEmpty(checkInfo)){
       await this.modelInstance.add({user_id:userId,check_times:1,check_times_total:1});
+      await this.model('checklog').add({user_id:userId})
     }else{
       let dateService = think.service('date');
       let last_visit_date = new Date(checkInfo.last_visit_time);
@@ -26,8 +27,10 @@ export default class extends think.controller.rest {
         let check_times = checkInfo.check_times===6?0:checkInfo.check_times+1;//7天清零
         let check_times_total = checkInfo.check_times_total+1;
         await this.modelInstance.update({check_times,check_times_total,last_visit_time:new Date()},{user_id:userId});
+        await this.model('checklog').add({user_id:userId})
       }else{
         await this.modelInstance.update({check_times:1,check_times_total:1,last_visit_time:new Date()},{user_id:userId});//断签
+        await this.model('checklog').add({user_id:userId})
       }
     }
     checkInfo = await this.modelInstance.where({user_id:userId}).getField('check_times,check_times_total,last_visit_time',true);
@@ -37,6 +40,9 @@ export default class extends think.controller.rest {
   async historyAction(){
     let userId = think.service('auth').getUserId(this)
     if(!userId)return;
+    let { year, month } = this.post();
+    let MonthHis = await this.model('checklog').where(`DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');
+    return this.success(MonthHis);
   }
 
 }

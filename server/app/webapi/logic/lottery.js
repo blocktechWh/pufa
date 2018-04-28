@@ -29,19 +29,6 @@ var _class = function (_think$logic$base) {
     return (0, _possibleConstructorReturn3.default)(this, _think$logic$base.apply(this, arguments));
   }
 
-  _class.prototype.currentAction = function currentAction() {
-    var rules = {
-      token: {
-        required: true,
-        value: this.header('token')
-      }
-    };
-    var flag = this.validate(rules);
-    if (!flag) {
-      return this.fail('validate error', this.errors());
-    }
-  };
-
   return _class;
 }(think.logic.base);
 
