@@ -36,9 +36,50 @@
 .signed-circle{
   width: 60rpx;
   height: 60rpx;
-  margin: 19rpx auto;
+  margin: 11rpx auto;
   background-color: #ffbb00;
   border-radius: 30rpx;
   line-height: 60rpx;
   text-align: center;
+}
+.jifen-show{
+  margin-top: 30rpx;
+  text-align: center;
+}
+.jifen-show>text:first-of-type{
+  font-size: 66rpx;
+  color: rgb(68, 109, 255);
+}
+.jifen-show>text:nth-child(2){
+  font-size: 36rpx;
+   color: rgb(68, 109, 255);
+}
+.sign-button{
+  margin-top: 10rpx;
+}
+.sign-button button{
+  width: 300rpx;
+  height: 106rpx;
+  margin: 0 auto;
+  background-color: #ccc;
+  text-align: center;
+  font-size: 44rpx;
+  color: #fff;
+  line-height: 106rpx;
+}
+.sign-days{
+  margin-top: 86rpx;
+  position: relative;
+  height: 100rpx;
+  padding-left: 30rpx;
+  background-color: #fff;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+.sign-days image{
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  right: 30rpx;
+  top: 28rpx;
 }

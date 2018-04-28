@@ -5,16 +5,72 @@ Page({
    * 页面的初始数据
    */
   data: {
-    progress_txt: 0, 
+    progress_txt: 0,
+    stepsIndex: 0,
+    stepsCount: 0,
+    stepsInfoList: [
+      {
+        date: "4/20",
+        steps: 20000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left:"5rpx"
+      },
+      {
+        date: "4/21",
+        steps: 6000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "95rpx"
+      },
+      {
+        date: "4/22",
+        steps: 10000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "185rpx"
+      },
+      {
+        date: "4/23",
+        steps: 3000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "275rpx"
+      },
+      {
+        date: "4/24",
+        steps: 4500,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "365rpx"
+      },
+      {
+        date: "4/25",
+        steps: 7000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "455rpx"
+      },
+      {
+        date: "4/26",
+        steps: 8000,
+        stepsCurrent: 0,
+        bottom: "10rpx",
+        left: "545rpx"
+      }
+    ],
+
     count: 0, // 设置 计数器 初始为0
-    countTimer: null // 设置 定时器 初始为null
+    countTimer: null, // 设置 定时器 初始为null
+    tabState: "info",
+    stepsGroup: [3000, 5000, 12000, 6000, 8000, 2000, 4500]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
@@ -23,14 +79,15 @@ Page({
   onReady: function () {
     this.drawProgressbg();
     //this.drawCircle(2);
-    this.countInterval()
+    this.countInterval();
+    //this.drawStepsbg(3)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
   drawProgressbg: function () {
     // 使用 wx.createContext 获取绘图上下文 context
@@ -61,16 +118,35 @@ Page({
     context.stroke();
     context.draw()
   },
+  drawStepsbg: function (drawLong, i) {
+    var context = wx.createCanvasContext('canvasSteps' + i);
+
+    // 设置渐变
+    var gradient = context.createLinearGradient(25, 233, 25, 0);
+    gradient.addColorStop("0", "#5284ff");
+    gradient.addColorStop("0.5", "#c347ff");
+    gradient.addColorStop("1.0", "#5284ff");
+
+    context.setLineWidth(10);
+    context.setStrokeStyle(gradient);
+    context.setLineCap('round')
+    context.beginPath();
+    // 参数step 为绘制的圆环周长，从0到2为一周 。 -Math.PI / 2 将起始角设在12点钟位置 ，结束角 通过改变 step 的值确定
+    context.moveTo(24.5, 223)
+    context.lineTo(24.5, 223 - drawLong)
+    context.stroke()
+    context.draw()
+  },
   countInterval: function () {
     // 设置倒计时 定时器 每40毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
     this.countTimer = setInterval(() => {
-      if (this.data.count <= 30) {
+      if (this.data.count <= 50) {
         /* 绘制彩色圆环进度条 
         注意此处 传参 step 取值范围是0到2，
-        所以 计数器 最大值 50 对应 2 做处理，计数器count=50的时候step=2
+        所以 计数器 最大值 50 对应 2 做处理，计数器steps=50的时候step=2
         */
         this.drawCircle(this.data.count / (50 / 2))
-        if (this.data.count > 0){
+        if (this.data.count > 0) {
           var progress_txt = this.data.progress_txt + 200;
           this.setData({
             progress_txt: progress_txt
@@ -78,7 +154,6 @@ Page({
         }
 
         this.data.count++;
-        
 
       } else {
 
@@ -86,38 +161,87 @@ Page({
       }
     }, 40)
   },
+  countStepsInterval: function () {
+    var _this = this;
+    // 设置倒计时 定时器 每40毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
+    _this.countTimer1 = setInterval(() => {
+
+      if (_this.data.stepsCount <= 50) {
+        /* 绘制彩色圆环进度条 
+        注意此处 传参 step 取值范围是0到2，
+        所以 计数器 最大值 50 对应 2 做处理，计数器count=50的时候step=2
+        */
+        var index = _this.data.stepsIndex,
+          stepsInfoList = _this.data.stepsInfoList,
+          drawLong = (_this.data.stepsCount / 50) * 100 * (stepsInfoList[index].steps / 10000) * (_this.data.stepsCount / 50);
+
+        
+        var stepsCurrent = stepsInfoList[index].steps * (_this.data.stepsCount / 50);
+        //console.log("stepsCurrent", stepsCurrent)
+        stepsInfoList[index].stepsCurrent = Math.ceil(stepsCurrent);
+        stepsInfoList[index].bottom = (drawLong*2 + 10) + "rpx";
+        _this.data.stepsCount++;
+        _this.setData({
+          stepsInfoList: stepsInfoList
+        })
+        _this.drawStepsbg(drawLong, _this.data.stepsIndex + 1);
+
+      } else if (_this.data.stepsIndex < 6) {
+        _this.data.stepsIndex++;
+        console.log("_this.data.stepsIndex", _this.data.stepsIndex)
+        _this.data.stepsCount = 0;
+
+      } else {
+        clearInterval(_this.countTimer1);
+      }
+    }, 15)
+  },
+  tabClick: function (e) {
+    console.log(e)
+    if (e.currentTarget.dataset.state === "info") {
+      this.setData({
+        tabState: "info"
+      })
+
+    } else {
+      this.setData({
+        tabState: "history"
+      })
+      this.countStepsInterval();
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

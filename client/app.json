@@ -3,6 +3,8 @@
     "pages/index/index",
     "pages/steps/steps",
     "pages/signIn/signIn",
+    "pages/moreJiFen/moreJiFen",
+    "pages/myPrizeDraws/myPrizeDraws",
     "pages/user/user",
     "pages/actions/actions",
     "pages/detail2/detail2",

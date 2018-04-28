@@ -6,7 +6,7 @@
     </view>
     <view class='week-group'>
       <view>
-        <text>天</text>
+        <text>日</text>
       </view>
       <view>
         <text>一</text>
@@ -40,5 +40,14 @@
       </block>
     </view>
   </view>
-
+  <view class='jifen-show'>
+    <text>100</text><text>积分</text>
+  </view>
+  <view class='sign-button'>
+    <button>明日签到+2</button>
+  </view>
+  <view class='sign-days'>
+    <text>连续签到1/7天，获取10积分</text>
+    <image src='../../resource/images/did-icon.png'></image>
+  </view>
 </view>

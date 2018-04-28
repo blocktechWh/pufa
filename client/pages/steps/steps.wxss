@@ -31,7 +31,7 @@
   box-shadow: 3rpx 3rpx 1rpx 3rpx #ccc;
 }
 
-.step-info {
+.step-info, .steps-history {
   height: 840rpx;
 }
 
@@ -58,15 +58,16 @@
   background-color: #ccc;
   /* margin-left: 2rpx; */
 }
-.container{
+
+.container {
   padding: 0 0;
   height: 492rpx;
 }
+
 .progress_box {
   position: relative;
   margin-top: 160rpx;
-  margin-bottom:-80rpx;
-
+  margin-bottom: -80rpx;
   width: 332rpx;
   height: 332rpx;
   /*  这里的宽高是必须大于等于canvas圆环的直径 否则绘制到盒子外面就看不见了
@@ -75,7 +76,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .progress_bg {
@@ -97,7 +97,7 @@
 .steps-title {
   display: block;
   font-size: 24rpx;
-  text-align: center
+  text-align: center;
 }
 
 .progress_info {
@@ -107,7 +107,8 @@
   text-align: center;
   color: rgb(197, 56, 255);
 }
-.left-steps-text{
+
+.left-steps-text {
   height: 56rpx;
   width: 500rpx;
   margin: 68rpx auto;
@@ -116,11 +117,12 @@
   font-size: 24rpx;
   border-bottom: 2rpx solid #ccc;
 }
-.step-button{
-  margin-top:-12rpx;
 
+.step-button {
+  margin-top: -12rpx;
 }
-.step-button button{
+
+.step-button button {
   width: 300rpx;
   height: 106rpx;
   border-radius: 15rpx;
@@ -129,4 +131,70 @@
   background-color: #ccc;
   font-size: 44rpx;
   color: #fff;
+}
+
+.canvas-group {
+  padding: 0 25rpx;
+  height: 446rpx;
+  margin-top: 50rpx;
+}
+
+.canvas-group .steps_bg {
+  margin: 0;
+  display: block;
+  width: 90rpx;
+  height: 446rpx;
+  float: left;
+}
+
+.dates-group {
+  position: relative;
+  height: 40rpx;
+  padding: 0 25rpx;
+}
+.canvas-group .target-line{
+  position: absolute;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  z-index: 99;
+  font-size: 18rpx;
+  width: 690rpx;
+  border-bottom: 2rpx dotted #ccc;
+  top: 255rpx;
+  left: 0;
+}
+.canvas-group .steps-number-group{
+  position: absolute;
+  width: 690rpx;
+  height: 446rpx;
+
+}
+.canvas-group .steps-number-group view{
+  position: absolute;
+  z-index: 100;
+  width: 90rpx;
+  font-size: 18rpx;
+  text-align: center;
+}
+.dates-group .dates-item {
+  width: 90rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 18rpx;
+  color: rgb(183, 183, 183);
+  float: left;
+}
+
+.jifen-got-info {
+  height: 56rpx;
+  width: 500rpx;
+  margin: 110rpx auto;
+  text-align: center;
+  border-bottom: 2rpx solid rgb(183, 183, 183);
+  font-size: 24rpx;
+  color: rgb(183, 183, 183);
+  line-height: 56rpx;
 }

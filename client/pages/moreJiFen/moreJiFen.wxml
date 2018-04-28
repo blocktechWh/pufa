@@ -1,0 +1,20 @@
+<!--pages/moreJiFen/moreJiFen.wxml-->
+<view class='page'>
+  <view class='my-jifen-info'>
+    <text>我的积分：100</text>
+  </view>
+  <view class='more-jifen-container'>
+    <navigator url='../../pages/signIn/signIn'>
+      <text>签到得积分(+2)</text>
+      <image src=' ../../resource/images/did-icon.png'></image>
+    </navigator>
+     <navigator url='../../pages/steps/steps'>
+      <text>运动得积分(+2)</text>
+      <image src='../../resource/images/undo-icon.png'></image>
+    </navigator>
+    <navigator url='../../pages/signIn/signIn'>
+      <text>答题得积分(+2)</text>
+      <image src=' ../../resource/images/undo-icon.png '></image>
+    </navigator> 
+  </view>
+</view>

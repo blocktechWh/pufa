@@ -1,0 +1,26 @@
+/* pages/myPrizeDraws/myPrizeDraws.wxss */
+.prize-draw-item{
+  position: relative;
+  background-color: #fff;
+  padding: 0 30rpx;
+  height: 150rpx;margin-top: 20rpx
+}
+.prize-draw-item>view{
+  height: 150rpx;
+  float: left;
+}
+.prize-draw-item>view:first-of-type{
+  width: 90rpx;
+
+}
+.prize-draw-item>view:first-of-type image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  margin: 30rpx auto;
+}
+.prize-draw-item>view:nth-child(2){
+  line-height:150rpx;
+}
+
+

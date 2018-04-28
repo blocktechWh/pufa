@@ -3,7 +3,7 @@
     <image src='../../resource/images/header-bac.png'></image>
   </view>
   <view class='tab-box'>
-    <view class='step-info'>
+    <view hidden="{{tabState==='history'}}" class='step-info'>
       <view class="container">
         <view class='progress_box'>
           <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
@@ -24,14 +24,47 @@
       <view class='step-button'>
         <button>未完成</button>
       </view>
-
-
     </view>
+    <view hidden="{{tabState==='info'}}" class='steps-history'>
+      <view class='canvas-group'>
+        <view class='steps-number-group'>
+          <block wx:for="{{stepsInfoList}}">
+            <view style='left:{{item.left}};bottom:{{item.bottom}}'>
+              <text>{{item.stepsCurrent}}</text>
+            </view>
+          </block>
+
+        </view>
+        <view class='target-line'>
+          <text>10000</text>
+        </view>
+        <canvas class="steps_bg" canvas-id="canvasSteps1"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps2"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps3"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps4"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps5"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps6"> </canvas>
+        <canvas class="steps_bg" canvas-id="canvasSteps7"> </canvas>
+        <view class='clear'></view>
+      </view>
+      <view class='dates-group'>
+        <block wx:for="{{stepsInfoList}}">
+          <view class='dates-item'>
+            <text>{{item.date}}</text>
+          </view>
+        </block>
+        <view class='clear'></view>
+      </view>
+      <view class='jifen-got-info'>
+        <text>累计获得积分：40</text>
+      </view>
+    </view>
+
     <view class='step-tab-buttons'>
-      <view>
+      <view bindtap='tabClick' data-state="info">
         <text>今日步数</text>
       </view>
-      <view>
+      <view bindtap='tabClick' data-state="history">
         <text>历史步数</text>
       </view>
     </view>

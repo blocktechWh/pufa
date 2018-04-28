@@ -1,0 +1,18 @@
+<!--pages/myPrizeDraws/myPrizeDraws.wxml-->
+<view class='page'>
+  <view class='prize-draw-container'>
+    <block wx:for="{{prizeDrawList}}">
+      <view class='prize-draw-item'>
+        <view>
+          <image src='{{item.initiatorImgUrl}}'></image>
+        </view>
+        <view><text>{{item.initiatorName}}</text></view>
+        <view>
+          <block wx:for="{{item.participantImgUrls}}" wx:for-item="participantImg">
+              <image src="{{participantImg}}"></image>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
