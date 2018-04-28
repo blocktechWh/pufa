@@ -1,0 +1,18 @@
+<!--pages/openOnline/openOnline.wxml-->
+<view class='page'>
+  <view class='credit-card-show'>
+    <image src='../../resource/images/credit_card.png'></image>
+  </view>
+  <view class='credit-card-describ'>
+    <view class='credit-card-describ-title'>
+      <text>浦发银行白金信用卡</text>
+    </view>
+    <view class='credit-card-describ-text'>
+      <image src='../../resource/images/did-icon.png'></image>
+      <text>VISA、银行双标卡、免年费</text>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="next-step">下一步</button>
+  </view>
+</view>

@@ -44,6 +44,11 @@ Page({
     wx.navigateTo({
       url: '../../weui/dist/example/grid/grid',
     })
+  },
+  openOnline:function(){
+    wx.navigateTo({
+      url: '../../pages/openOnline/openOnline',
+    })
   }
 
   

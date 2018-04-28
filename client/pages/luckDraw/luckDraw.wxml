@@ -1,0 +1,4 @@
+<!--pages/luckDraw/luckDraw.wxml-->
+<view class='page'>
+  <image src='../../resource/images/luck_draw_bac.png' class='bac-img'></image>
+</view>

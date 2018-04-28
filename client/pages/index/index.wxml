@@ -18,7 +18,7 @@
       <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
         <image src='../../resource/images/extension_award_icon.png' style='margin-top:36rpx'></image>
       </navigator>
-      <navigator class='menu-box menu-box-three'>
+      <navigator class='menu-box menu-box-three' url='../../pages/luckDraw/luckDraw'>
         <image src='../../resource/images/luck_draw_icon.png' style='margin-top:36rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
@@ -36,7 +36,7 @@
     <view class='clear'></view>
   </view>
   <view class='index-footer'>
-    <image src='../../resource/images/apply_button.png'></image>
+    <image src='../../resource/images/apply_button.png' bindtap='openOnline'></image>
     <image src='../../resource/images/bottom_image.png'></image>
   </view>
 </view>

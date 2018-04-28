@@ -7,7 +7,7 @@ Page({
   data: {
     prizeDrawList: [
       {
-        initiatorImgUrl: "../../resource/images/head.png",
+        initiatorImgUrl: "../../resource/images/head1.png",
         initiatorName: "柚子酱",
         participantImgs: [
           {
@@ -45,7 +45,7 @@ Page({
         ]
       },
       {
-        initiatorImgUrl: "../../resource/images/head.png",
+        initiatorImgUrl: "../../resource/images/head1.png",
         initiatorName: "柚子酱",
         participantImgUrls: [
           "../../resource/images/head.png",
@@ -54,7 +54,7 @@ Page({
         ]
       },
       {
-        initiatorImgUrl: "../../resource/images/head.png",
+        initiatorImgUrl: "../../resource/images/head1.png",
         initiatorName: "柚子酱",
         participantImgUrls: [
           "../../resource/images/head.png",

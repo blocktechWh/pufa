@@ -1,35 +1,42 @@
 /* pages/myPrizeDraws/myPrizeDraws.wxss */
-.prize-draw-item{
+
+.prize-draw-item {
   position: relative;
   background-color: #fff;
   padding: 0 30rpx;
-  height: 150rpx;margin-top: 20rpx
+  height: 150rpx;
+  margin-top: 20rpx;
 }
-.prize-draw-item>view{
+
+.prize-draw-item>view {
   height: 150rpx;
   float: left;
 }
-.prize-draw-item>view:first-of-type{
-  width: 90rpx;
 
+.prize-draw-item>view:first-of-type {
+  width: 90rpx;
 }
-.prize-draw-item>view:first-of-type image{
+
+.prize-draw-item>view:first-of-type image {
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
   margin: 30rpx auto;
   border: 2rpx solid #ccc;
 }
-.prize-draw-item>view:nth-child(2){
-  line-height:150rpx;
+
+.prize-draw-item>view:nth-child(2) {
+  line-height: 150rpx;
   font-size: 28rpx;
   color: rgb(111, 127, 132);
   padding-left: 12rpx;
 }
-.prize-draw-item>view:nth-child(3){
+
+.prize-draw-item>view:nth-child(3) {
   position: relative;
 }
-.prize-draw-item>view:nth-child(3) image{
+
+.prize-draw-item>view:nth-child(3) image {
   position: absolute;
   width: 58rpx;
   height: 58rpx;
@@ -37,7 +44,22 @@
   top: 46rpx;
   border: 2rpx solid #ccc;
 }
-.parize-draws-details-btn{
+
+.prize-draw-item>view:nth-child(3)>view {
+  position: absolute;
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 29rpx;
+  top: 46rpx;
+  background-color: rgb(68, 109, 255);
+  color: rgb(254, 254, 254);
+  font-size: 22rpx;
+  left: 210rpx;
+  line-height: 58rpx;
+  text-align: center;
+}
+
+.parize-draws-details-btn {
   position: absolute;
   width: 114rpx;
   height: 54rpx;
@@ -49,5 +71,3 @@
   top: 48rpx;
   right: 30rpx;
 }
-
-
