@@ -8,10 +8,11 @@
         </view>
         <view><text>{{item.initiatorName}}</text></view>
         <view>
-          <block wx:for="{{item.participantImgUrls}}" wx:for-item="participantImg">
-              <image src="{{participantImg}}"></image>
+          <block wx:for="{{item.participantImgs}}" wx:for-item="participantImg">
+              <image src="{{participantImg.participantImgUrl}}" style='left:{{participantImg.positionLeft}};z-index:{{item.participantImgs.length-participantImg.participantImgIndex}}'></image>
           </block>
         </view>
+        <button class='parize-draws-details-btn'><text>详情</text></button>
       </view>
     </block>
   </view>

@@ -9,10 +9,39 @@ Page({
       {
         initiatorImgUrl: "../../resource/images/head.png",
         initiatorName: "柚子酱",
-        participantImgUrls: [
-          "../../resource/images/head.png",
-          "../../resource/images/head.png",
-          "../../resource/images/head.png"
+        participantImgs: [
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft:"30rpx",
+            participantImgIndex:0
+            
+          },
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft: "65rpx",
+            participantImgIndex: 1
+          },
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft: "90rpx",
+            participantImgIndex: 2
+          },
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft: "125rpx",
+            participantImgIndex: 3
+          },
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft: "160rpx",
+            participantImgIndex: 4
+          },
+          {
+            participantImgUrl: "../../resource/images/head.png",
+            positionLeft: "195rpx",
+            participantImgIndex: 5
+          },
+
         ]
       },
       {

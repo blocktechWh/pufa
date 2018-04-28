@@ -26,7 +26,7 @@
       </navigator>
     </view>
     <view class='index-content-three'>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}'url='../../pages/moreJiFen/moreJiFen'>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/myPrizeDraws/myPrizeDraws'>
         <image src='../../resource/images/luck_draw_history_icon.png' style='margin-top:92rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/moreJiFen/moreJiFen'>
@@ -36,7 +36,7 @@
     <view class='clear'></view>
   </view>
   <view class='index-footer'>
-  <image src='../../resource/images/apply_button.png'></image>
+    <image src='../../resource/images/apply_button.png'></image>
     <image src='../../resource/images/bottom_image.png'></image>
   </view>
 </view>

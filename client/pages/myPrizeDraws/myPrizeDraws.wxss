@@ -18,9 +18,36 @@
   height: 90rpx;
   border-radius: 45rpx;
   margin: 30rpx auto;
+  border: 2rpx solid #ccc;
 }
 .prize-draw-item>view:nth-child(2){
   line-height:150rpx;
+  font-size: 28rpx;
+  color: rgb(111, 127, 132);
+  padding-left: 12rpx;
+}
+.prize-draw-item>view:nth-child(3){
+  position: relative;
+}
+.prize-draw-item>view:nth-child(3) image{
+  position: absolute;
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 29rpx;
+  top: 46rpx;
+  border: 2rpx solid #ccc;
+}
+.parize-draws-details-btn{
+  position: absolute;
+  width: 114rpx;
+  height: 54rpx;
+  border-radius: 5rpx;
+  background-color: rgb(68, 109, 255);
+  color: rgb(254, 254, 254);
+  line-height: 54rpx;
+  font-size: 24rpx;
+  top: 48rpx;
+  right: 30rpx;
 }
 
 
