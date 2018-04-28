@@ -8,7 +8,7 @@ export default class extends think.controller.rest {
   }
 
   async currentAction(){
-    let userId = think.service('auth').getUser(this)
+    let userId = think.service('auth').getUserId(this)
     if(!userId)return;
     let currentLotteryInfo = await this.modelInstance.where({'owner': userId}).select();
     return this.success(currentLotteryInfo);

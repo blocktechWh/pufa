@@ -44,7 +44,7 @@ var _class = function (_think$controller$res) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              userId = think.service('auth').getUser(this);
+              userId = think.service('auth').getUserId(this);
 
               if (userId) {
                 _context.next = 3;

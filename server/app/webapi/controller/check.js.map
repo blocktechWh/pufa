@@ -1,0 +1,49 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/webapi/controller/check.js"
+    ],
+    "names": [
+        "init",
+        "http",
+        "_isRest",
+        "__before",
+        "indexAction",
+        "userId",
+        "think",
+        "service",
+        "getUserId",
+        "modelInstance",
+        "find",
+        "user_id",
+        "checkInfo",
+        "isEmpty",
+        "add",
+        "check_times",
+        "check_times_total",
+        "model",
+        "dateService",
+        "last_visit_date",
+        "Date",
+        "last_visit_time",
+        "isToday",
+        "fail",
+        "isYestday",
+        "update",
+        "where",
+        "getField",
+        "success",
+        "historyAction",
+        "post",
+        "year",
+        "month",
+        "MonthHis",
+        "controller",
+        "rest"
+    ],
+    "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;mBAIEA,I,iBAAKC,I,EAAK;AACR,oCAAMD,IAAN,YAAWC,IAAX;AACA,SAAKC,OAAL,GAAe,KAAf;AACD,G;;mBAEDC,Q,uBAAU,CAET,C;;mBAEKC,W;;;;;;;AACAC,oB,GAASC,MAAMC,OAAN,CAAc,MAAd,EAAsBC,SAAtB,CAAgC,IAAhC,C;;kBACTH,M;;;;;;;;;qBACkB,KAAKI,aAAL,CAAmBC,IAAnB,CAAwB,EAACC,SAAQN,MAAT,EAAxB,C;;;AAAlBO,uB;;mBACDN,MAAMO,OAAN,CAAcD,SAAd,C;;;;;;qBACK,KAAKH,aAAL,CAAmBK,GAAnB,CAAuB,EAACH,SAAQN,MAAT,EAAgBU,aAAY,CAA5B,EAA8BC,mBAAkB,CAAhD,EAAvB,C;;;;qBACA,KAAKC,KAAL,CAAW,UAAX,EAAuBH,GAAvB,CAA2B,EAACH,SAAQN,MAAT,EAA3B,C;;;;;;;AAEFa,yB,GAAcZ,MAAMC,OAAN,CAAc,MAAd,C;AACdY,6B,GAAkB,IAAIC,IAAJ,CAASR,UAAUS,eAAnB,C;;mBACnBH,YAAYI,OAAZ,CAAoBH,eAApB,C;;;;;+CACM,KAAKI,IAAL,CAAU,UAAV,C;;;mBACAL,YAAYM,SAAZ,CAAsBL,eAAtB,C;;;;;AACHJ,yB,GAAcH,UAAUG,WAAV,KAAwB,CAAxB,GAA0B,CAA1B,GAA4BH,UAAUG,WAAV,GAAsB,C,EAAE;;AAClEC,+B,GAAoBJ,UAAUI,iBAAV,GAA4B,C;;qBAC9C,KAAKP,aAAL,CAAmBgB,MAAnB,CAA0B,EAACV,wBAAD,EAAaC,oCAAb,EAA+BK,iBAAgB,IAAID,IAAJ,EAA/C,EAA1B,EAAqF,EAACT,SAAQN,MAAT,EAArF,C;;;;qBACA,KAAKY,KAAL,CAAW,UAAX,EAAuBH,GAAvB,CAA2B,EAACH,SAAQN,MAAT,EAA3B,C;;;;;;;;qBAEA,KAAKI,aAAL,CAAmBgB,MAAnB,CAA0B,EAACV,aAAY,CAAb,EAAeC,mBAAkB,CAAjC,EAAmCK,iBAAgB,IAAID,IAAJ,EAAnD,EAA1B,EAAyF,EAACT,SAAQN,MAAT,EAAzF,C;;;;qBACA,KAAKY,KAAL,CAAW,UAAX,EAAuBH,GAAvB,CAA2B,EAACH,SAAQN,MAAT,EAA3B,C;;;;qBAGQ,KAAKI,aAAL,CAAmBiB,KAAnB,CAAyB,EAACf,SAAQN,MAAT,EAAzB,EAA2CsB,QAA3C,CAAoD,+CAApD,EAAoG,IAApG,C;;;AAAlBf,uB;+CACO,KAAKgB,OAAL,CAAa,EAAChB,oBAAD,EAAb,C;;;;;;;;;;;;;;;;;mBAGHiB,a;;;;;;;;AACAxB,oB,GAASC,MAAMC,OAAN,CAAc,MAAd,EAAsBC,SAAtB,CAAgC,IAAhC,C;;kBACTH,M;;;;;;;;sBACkB,KAAKyB,IAAL,E,EAAhBC,I,SAAAA,I,EAAMC,K,SAAAA,K;;qBACS,KAAKf,KAAL,CAAW,UAAX,EAAuBS,KAAvB,CAA6B,2CAAwCK,IAAxC,GAA+C,EAA/C,GAAoDC,KAApD,MAA7B,EAA8FL,QAA9F,CAAuG,YAAvG,C;;;AAAjBM,sB;gDACG,KAAKL,OAAL,CAAaK,QAAb,C;;;;;;;;;;;;;;;;;;EA1CkB3B,MAAM4B,UAAN,CAAiBC,I",
+    "file": "../../../src/webapi/controller/check.js",
+    "sourcesContent": [
+        "'use strict';\n\nexport default class extends think.controller.rest {\n  \n  init(http){\n    super.init(http);\n    this._isRest = false;\n  }\n  \n  __before(){\n    \n  }\n\n  async indexAction(){\n    let userId = think.service('auth').getUserId(this);\n    if(!userId)return;\n    let checkInfo = await this.modelInstance.find({user_id:userId});\n    if(think.isEmpty(checkInfo)){\n      await this.modelInstance.add({user_id:userId,check_times:1,check_times_total:1});\n      await this.model('checklog').add({user_id:userId})\n    }else{\n      let dateService = think.service('date');\n      let last_visit_date = new Date(checkInfo.last_visit_time);\n      if(dateService.isToday(last_visit_date)){\n        return this.fail('今天已经签到过了');\n      }else if(dateService.isYestday(last_visit_date)){\n        let check_times = checkInfo.check_times===6?0:checkInfo.check_times+1;//7天清零\n        let check_times_total = checkInfo.check_times_total+1;\n        await this.modelInstance.update({check_times,check_times_total,last_visit_time:new Date()},{user_id:userId});\n        await this.model('checklog').add({user_id:userId})\n      }else{\n        await this.modelInstance.update({check_times:1,check_times_total:1,last_visit_time:new Date()},{user_id:userId});//断签\n        await this.model('checklog').add({user_id:userId})\n      }\n    }\n    checkInfo = await this.modelInstance.where({user_id:userId}).getField('check_times,check_times_total,last_visit_time',true);\n    return this.success({checkInfo});\n  }\n\n  async historyAction(){\n    let userId = think.service('auth').getUserId(this)\n    if(!userId)return;\n    let { year, month } = this.post();\n    let MonthHis = await this.model('checklog').where(`DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');\n    return this.success(MonthHis);\n  }\n\n}"
+    ]
+}

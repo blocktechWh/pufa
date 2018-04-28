@@ -121,7 +121,7 @@ var _class = function (_think$controller$res) {
               user = _context2.sent;
               userId = void 0, userPoint = void 0;
 
-              if (!user) {
+              if (think.isEmpty(user)) {
                 _context2.next = 20;
                 break;
               }

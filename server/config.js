@@ -10,6 +10,7 @@ const CONF = {
     user: 'root',
     db: 'pufa',
     pass: 'wxdf98b3bc862bda45',
+    // pass: '',
     char: 'utf8mb4'
   },
   cos: {

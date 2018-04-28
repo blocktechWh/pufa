@@ -10,11 +10,12 @@
     "watch": "npm run watch-compile"
   },
   "dependencies": {
-    "thinkjs": "v2",
-    "babel-runtime": "6.x.x",
-    "source-map-support": "0.4.0",
     "axios": "^0.15.3",
+    "babel-runtime": "6.x.x",
     "jsonwebtoken": "^8.1.0",
+    "knex": "^0.14.6",
+    "source-map-support": "0.4.0",
+    "thinkjs": "v2",
     "wafer-node-sdk": "^1.0.7"
   },
   "devDependencies": {

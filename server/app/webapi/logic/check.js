@@ -29,6 +29,29 @@ var _class = function (_think$logic$base) {
     return (0, _possibleConstructorReturn3.default)(this, _think$logic$base.apply(this, arguments));
   }
 
+  /**
+   * index action logic
+   * @return {} []
+   */
+  _class.prototype.indexAction = function indexAction() {};
+
+  _class.prototype.historyAction = function historyAction() {
+    var rules = {
+      year: {
+        required: true,
+        regexp: /^\d{4}$/
+      },
+      month: {
+        required: true,
+        regexp: /^\d{2}$/
+      }
+    };
+    var flag = this.validate(rules);
+    if (!flag) {
+      return this.fail('validate error', this.errors());
+    }
+  };
+
   return _class;
 }(think.logic.base);
 
