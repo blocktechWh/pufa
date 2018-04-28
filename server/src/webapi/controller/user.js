@@ -32,9 +32,19 @@ export default class extends think.controller.rest {
     if (!openid){
       return this.fail('code无效');
     }
-    let insertId = await this.modelInstance.thenAdd({name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key},{open_id: openid});
-    const token = jwt.sign({ id: insertId.u_id }, conf.jwtSecret, { expiresIn: '7d' })
-    return this.success({token});
+    let user = await this.modelInstance.find({open_id: openid});
+    let userId,userPoint;
+    if(user){
+      userId = user.u_id;
+      userPoint = user.point;
+      if(nickName!==user.name || avatarUrl!== user.image_url)await this.modelInstance.where({open_id: openid}).update({name: nickName, image_url: avatarUrl})
+    }else{
+      let userInsert = await this.modelInstance.add({name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key});
+      userId = userInsert.u_id;
+      userPoint = 0;//默认积分为0
+    }
+    const token = jwt.sign({ id: userId }, conf.jwtSecret, { expiresIn: '7d' });
+    return this.success({token,user:{nickName, avatarUrl, point:userPoint}});
   }
 
 }
