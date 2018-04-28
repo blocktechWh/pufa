@@ -91,7 +91,7 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.loginAction = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-      var _post, code, nickName, avatarUrl, url, res, _res$data, openid, session_key, insertId, token;
+      var _post, code, nickName, avatarUrl, url, res, _res$data, openid, session_key, user, userId, userPoint, userInsert, token;
 
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
@@ -115,14 +115,47 @@ var _class = function (_think$controller$res) {
 
             case 8:
               _context2.next = 10;
-              return this.modelInstance.thenAdd({ name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key }, { open_id: openid });
+              return this.modelInstance.find({ open_id: openid });
 
             case 10:
-              insertId = _context2.sent;
-              token = jwt.sign({ id: insertId.u_id }, conf.jwtSecret, { expiresIn: '7d' });
-              return _context2.abrupt('return', this.success({ token: token }));
+              user = _context2.sent;
+              userId = void 0, userPoint = void 0;
 
-            case 13:
+              if (!user) {
+                _context2.next = 20;
+                break;
+              }
+
+              userId = user.u_id;
+              userPoint = user.point;
+
+              if (!(nickName !== user.name || avatarUrl !== user.image_url)) {
+                _context2.next = 18;
+                break;
+              }
+
+              _context2.next = 18;
+              return this.modelInstance.where({ open_id: openid }).update({ name: nickName, image_url: avatarUrl });
+
+            case 18:
+              _context2.next = 25;
+              break;
+
+            case 20:
+              _context2.next = 22;
+              return this.modelInstance.add({ name: nickName, image_url: avatarUrl, open_id: openid, session_key: session_key });
+
+            case 22:
+              userInsert = _context2.sent;
+
+              userId = userInsert.u_id;
+              userPoint = 0; //默认积分为0
+
+            case 25:
+              token = jwt.sign({ id: userId }, conf.jwtSecret, { expiresIn: '7d' });
+              return _context2.abrupt('return', this.success({ token: token, user: { nickName: nickName, avatarUrl: avatarUrl, point: userPoint } }));
+
+            case 27:
             case 'end':
               return _context2.stop();
           }

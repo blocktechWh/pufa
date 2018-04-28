@@ -3,7 +3,7 @@
     <image src='../../resource/images/header-bac.png'></image>
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap='example'></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    <text class="my-integral">我的积分：100</text>
+    <text class="my-integral">我的积分：{{userInfo.point}}</text>
   </view>
   <view class='{{index_content}}' style='height:{{conH+"rpx"}}'>
     <view class='index-content-one'>
