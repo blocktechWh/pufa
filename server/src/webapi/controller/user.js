@@ -17,10 +17,9 @@ export default class extends think.controller.rest {
 
   //获取用户信息
   async infoAction(){
-    let userId = think.service('auth').getUserId(this)
-    if(!userId)return;
-    let data = await this.modelInstance.find({u_id:userId});
-    return this.success(data);
+    let user = await think.service('auth').getUser(this)
+    if(!user)return;
+    return this.success(user);
   }
 
   //添加用户

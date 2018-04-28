@@ -44,7 +44,7 @@ var _class = function (_think$controller$res) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              userId = think.service('auth').getUserId(this);
+              userId = think.service('auth').getUser(this);
 
               if (userId) {
                 _context.next = 3;
@@ -55,7 +55,7 @@ var _class = function (_think$controller$res) {
 
             case 3:
               _context.next = 5;
-              return this.modelInstance.getCurrentLottery(userId);
+              return this.modelInstance.where({ 'owner': userId }).select();
 
             case 5:
               currentLotteryInfo = _context.sent;
@@ -74,6 +74,26 @@ var _class = function (_think$controller$res) {
     }
 
     return currentAction;
+  }();
+
+  _class.prototype.joinAction = function () {
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+
+    function joinAction() {
+      return _ref2.apply(this, arguments);
+    }
+
+    return joinAction;
   }();
 
   return _class;

@@ -50,29 +50,28 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.infoAction = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-      var userId, data;
+      var user;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              userId = think.service('auth').getUserId(this);
+              _context.next = 2;
+              return think.service('auth').getUser(this);
 
-              if (userId) {
-                _context.next = 3;
+            case 2:
+              user = _context.sent;
+
+              if (user) {
+                _context.next = 5;
                 break;
               }
 
               return _context.abrupt('return');
 
-            case 3:
-              _context.next = 5;
-              return this.modelInstance.find({ u_id: userId });
-
             case 5:
-              data = _context.sent;
-              return _context.abrupt('return', this.success(data));
+              return _context.abrupt('return', this.success(user));
 
-            case 7:
+            case 6:
             case 'end':
               return _context.stop();
           }
