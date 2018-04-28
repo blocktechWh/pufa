@@ -34,7 +34,7 @@ export default class extends think.controller.rest {
     }
     let user = await this.modelInstance.find({open_id: openid});
     let userId,userPoint;
-    if(user){
+    if(!think.isEmpty(user)){
       userId = user.u_id;
       userPoint = user.point;
       if(nickName!==user.name || avatarUrl!== user.image_url)await this.modelInstance.where({open_id: openid}).update({name: nickName, image_url: avatarUrl})
