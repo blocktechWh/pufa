@@ -10,7 +10,6 @@ CREATE TABLE `user_lottery` (
   `user_id` mediumint(4) NOT NULL,
   `lottery_id` mediumint(9) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `last_visit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id` (`id`) USING BTREE,
   KEY `user_id` (`user_id`) USING BTREE,

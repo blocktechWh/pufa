@@ -33,7 +33,7 @@ export default class extends think.controller.rest {
         await this.model('user').increment('point',1)
       }
     }
-    await this.model('checklog').add({user_id:userId})//添加签到日志
+    await this.model('check_log').add({user_id:userId})//添加签到日志
     checkInfo = await this.modelInstance.where({user_id:userId}).getField('check_times,check_times_total,last_visit_time',true);
     return this.success({checkInfo});
   }
@@ -42,7 +42,7 @@ export default class extends think.controller.rest {
     let userId = think.service('auth').getUserId(this)
     if(!userId)return;
     let { year, month } = this.post();
-    let MonthHis = await this.model('checklog').where(`DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');
+    let MonthHis = await this.model('check_log').where(`DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');
     return this.success(MonthHis);
   }
 
