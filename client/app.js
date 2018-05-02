@@ -3,6 +3,11 @@ const url = require('./common/constant_url.js')
 
 App({
   onLaunch: function () {
+    // 文件名指定 worker 的入口文件路径，绝对路径
+    //var worker = wx.createWorker('workers/request/index.js');
+    // worker.postMessage({
+    //   msg: 'hello worker'
+    // })
     wx.login({
       success: resLogin => {
         const { code } = resLogin

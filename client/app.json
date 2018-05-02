@@ -14,6 +14,7 @@
     "pages/results/results",
     "pages/updateActivities/updateActivities"
   ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#597bff",

@@ -1,4 +1,43 @@
 <!--pages/luckDraw/luckDraw.wxml-->
 <view class='page'>
   <image src='../../resource/images/luck_draw_bac.png' class='bac-img'></image>
+  <view class='luck-draw-container'>
+    <view class='runner'>
+      <view class='circle' style='transform:rotate({{runAngle}}deg)'>
+        <image src='../../resource/images/runner.png'></image>
+        <block wx:for="{{users}}">
+          <view class='user' style='z-index:{{item.zIndex}};transform:rotate({{item.rotate}})'>
+            <image src='{{item.head}}'></image>
+            <view style='text-align:center;margin-top:-40rpx;'>
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </block>
+
+      </view>
+      <view class='arrow'>
+        <image src='../../resource/images/runner_arrow.png' bindtap='startGame'></image>
+      </view>
+    </view>
+    <view class='my-jifen'><text>我的积分：100</text></view>
+    <view class='game-rule-container'>
+      <view>
+        <text>游戏规则</text>
+      </view>
+      <view>
+        <text>五个人开一次，免费三次，后续每次-10积分</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='model-container' wx:if="{{gameIsOver}}">
+  <view class='{{gameIsOver?"model model-scale":"model"}}'>
+    <image src='../../resource/images/luck_draw_model.png'></image>
+    <image src='../../resource/images/close1.png' bindtap='closeModel'></image>
+    <view class='result-info'>
+      <text>您帮{{name}}抽中了xx，快告诉Ta这个好消息吧！</text>
+    </view>
+    <button class='result-share-btn' open-type='share'>立即分享</button>
+  </view>
+
 </view>
