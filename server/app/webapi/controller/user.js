@@ -41,10 +41,6 @@ var _class = function (_think$controller$res) {
     this._isRest = false;
   };
 
-  _class.prototype.__before = function __before() {
-    this.modelInstance.fieldReverse('password,open_id,session_key');
-  };
-
   //获取用户信息
 
 
@@ -115,7 +111,7 @@ var _class = function (_think$controller$res) {
 
             case 8:
               _context2.next = 10;
-              return this.modelInstance.find({ open_id: openid });
+              return this.modelInstance.where({ open_id: openid }).find();
 
             case 10:
               user = _context2.sent;

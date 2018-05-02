@@ -10,10 +10,6 @@ export default class extends think.controller.rest {
     super.init(http);
     this._isRest = false;
   }
-  
-  __before(){
-    this.modelInstance.fieldReverse('password,open_id,session_key');
-  }
 
   //获取用户信息
   async infoAction(){
@@ -32,7 +28,7 @@ export default class extends think.controller.rest {
     if (!openid){
       return this.fail('code无效');
     }
-    let user = await this.modelInstance.find({open_id: openid});
+    let user = await this.modelInstance.where({open_id: openid}).find();
     let userId,userPoint;
     if(!think.isEmpty(user)){
       userId = user.u_id;

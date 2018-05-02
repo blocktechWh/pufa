@@ -50,7 +50,7 @@ exports.default = {
               _context.prev = 4;
               decoded = jwt.verify(token, conf.jwtSecret);
               _context.next = 8;
-              return controllerInstance.model('user').find({ 'u_id': decoded.id }).select();
+              return controllerInstance.model('user').where({ 'u_id': decoded.id }).find();
 
             case 8:
               user = _context.sent;

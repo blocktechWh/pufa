@@ -10,6 +10,7 @@ CREATE TABLE `lottery` (
   `status` tinyint(4) NOT NULL DEFAULT 0,
   `owner` mediumint(9) NOT NULL,
   `winner` mediumint(9),
+  `prize` tinyint(4),
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_visit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

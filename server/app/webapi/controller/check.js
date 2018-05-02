@@ -57,7 +57,7 @@ var _class = function (_think$controller$res) {
 
             case 3:
               _context.next = 5;
-              return this.modelInstance.find({ user_id: userId });
+              return this.modelInstance.where({ user_id: userId }).find();
 
             case 5:
               checkInfo = _context.sent;
@@ -72,7 +72,7 @@ var _class = function (_think$controller$res) {
 
             case 9:
               _context.next = 11;
-              return this.model('checklog').add({ user_id: userId });
+              return this.model('user').where({ 'u_id': userId }).increment('point', 1);
 
             case 11:
               _context.next = 32;
@@ -95,15 +95,15 @@ var _class = function (_think$controller$res) {
                 break;
               }
 
-              check_times = checkInfo.check_times === 6 ? 0 : checkInfo.check_times + 1; //7天清零
+              check_times = checkInfo.check_times === 7 ? 1 : checkInfo.check_times + 1; //7天清零
 
               check_times_total = checkInfo.check_times_total + 1;
               _context.next = 24;
-              return this.modelInstance.update({ check_times: check_times, check_times_total: check_times_total, last_visit_time: new Date() }, { user_id: userId });
+              return this.modelInstance.update({ check_times: check_times, check_times_total: check_times_total, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
 
             case 24:
               _context.next = 26;
-              return this.model('checklog').add({ user_id: userId });
+              return this.model('user').where({ 'u_id': userId }).increment('point', check_times);
 
             case 26:
               _context.next = 32;
@@ -111,21 +111,25 @@ var _class = function (_think$controller$res) {
 
             case 28:
               _context.next = 30;
-              return this.modelInstance.update({ check_times: 1, check_times_total: 1, last_visit_time: new Date() }, { user_id: userId });
+              return this.modelInstance.update({ check_times: 1, check_times_total: 1, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
 
             case 30:
               _context.next = 32;
-              return this.model('checklog').add({ user_id: userId });
+              return this.model('user').where({ 'u_id': userId }).increment('point', 1);
 
             case 32:
               _context.next = 34;
-              return this.modelInstance.where({ user_id: userId }).getField('check_times,check_times_total,last_visit_time', true);
+              return this.model('check_log').add({ user_id: userId });
 
             case 34:
+              _context.next = 36;
+              return this.modelInstance.where({ user_id: userId }).getField('check_times,check_times_total,last_visit_time', true);
+
+            case 36:
               checkInfo = _context.sent;
               return _context.abrupt('return', this.success({ checkInfo: checkInfo }));
 
-            case 36:
+            case 38:
             case 'end':
               return _context.stop();
           }
@@ -160,7 +164,7 @@ var _class = function (_think$controller$res) {
             case 3:
               _post = this.post(), year = _post.year, month = _post.month;
               _context2.next = 6;
-              return this.model('checklog').where('DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
+              return this.model('check_log').where('user_id=' + userId + ' AND DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
 
             case 6:
               MonthHis = _context2.sent;

@@ -25,7 +25,7 @@ export default {
     }
     try {
       const decoded = jwt.verify(token, conf.jwtSecret);
-      const user = await controllerInstance.model('user').find({'u_id': decoded.id}).select();
+      const user = await controllerInstance.model('user').where({'u_id': decoded.id}).find();
       return user
     } catch (error) {
       controllerInstance.fail('token无效');
