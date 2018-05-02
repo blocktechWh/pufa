@@ -61,11 +61,16 @@
   width: 300rpx;
   height: 106rpx;
   margin: 0 auto;
-  background-color: #ccc;
   text-align: center;
   font-size: 44rpx;
   color: #fff;
   line-height: 106rpx;
+}
+.sign-button .sign-in{
+ background-color: #446dff;
+}
+.sign-button .no-sign-in{
+ background-color: #ccc;
 }
 .sign-days{
   margin-top: 86rpx;

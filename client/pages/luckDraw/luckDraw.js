@@ -7,7 +7,7 @@ Page({
   data: {
     runAngle: 0,
     angleOfSingleTime: 4,
-    gameIsOver: true,
+    gameIsOver: false,
     users: [
       {
         name: 1,
@@ -160,7 +160,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '一起来AA吧',
+      title: '拼团抽奖送好礼！',
       //path: 'http://dingyeap.com/api/joinAction?id=' + this.data.id,
       path: '/pages/detail2/detail2?shareActionId=' + this.data.id,
       success: function (res) {

@@ -66,13 +66,16 @@
 .my-jifen{
   text-align: center;
   color: #fff;
-  font: 30rpx;
+  font-size: 28rpx;
+  margin-top:-50rpx;
+
 }
 .game-rule-container {
   position: relative;
   width: 600rpx;
   height: 56rpx;
   margin: 0 auto;
+  margin-top:50rpx;
 }
 
 .game-rule-container>view:first-of-type {

@@ -4,6 +4,7 @@
     "pages/steps/steps",
     "pages/signIn/signIn",
     "pages/moreJiFen/moreJiFen",
+    "pages/extensionReward/extensionReward",
     "pages/luckDraw/luckDraw",
     "pages/myPrizeDraws/myPrizeDraws",
     "pages/openOnline/openOnline",

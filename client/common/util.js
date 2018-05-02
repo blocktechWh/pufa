@@ -32,7 +32,7 @@ const diffDate = (date1, date2) => {
   return days ? days + ' days' : hours ? hours + ' hours' : minutes ? minutes + ' minutes' : seconds +' seconds'
 }
 
-const formatTime = date => {
+const formatTime = (date,type) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -40,7 +40,14 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  if(type===1){
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  }else if(type===2){
+    return [year, month, day].map(formatNumber).join('-');
+  }else if(type===3){
+    return [year, month, day].map(formatNumber).join('/');
+  }
+
 }
 
 const formatNumber = n => {

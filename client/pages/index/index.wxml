@@ -15,14 +15,16 @@
       </navigator>
     </view>
     <view class='index-content-two'>
-      <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
+      <navigator class='menu-box menu-box-two' style='height:{{height2}}' >
         <image src='../../resource/images/extension_award_icon.png' style='margin-top:36rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-three' url='../../pages/luckDraw/luckDraw'>
         <image src='../../resource/images/luck_draw_icon.png' style='margin-top:36rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
-        <image src='../../resource/images/Invitation_icon.png' style='margin-top:36rpx'></image>
+        <button class='share-luck-draw' open-type='share'>
+          <image src='../../resource/images/Invitation_icon.png' style='margin-top:36rpx'></image>
+        </button>
       </navigator>
     </view>
     <view class='index-content-three'>

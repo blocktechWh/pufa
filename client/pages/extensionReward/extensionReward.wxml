@@ -1,0 +1,26 @@
+<!--pages/extensionReward/extensionReward.wxml-->
+<view class='page'>
+  <view class='prize-draw-container'>
+    <block wx:for="{{prizeDrawList}}">
+      <view class='prize-draw-item'>
+        <view>
+          <image src='{{item.initiatorImgUrl}}'></image>
+        </view>
+        <view>
+          <text>{{item.initiatorName}}</text>
+        </view>
+        <view>
+          <block wx:for="{{item.participantImgs}}" wx:for-item="participantImg">
+            <image wx:if="{{participantImg.participantImgIndex<5}}" src="{{participantImg.participantImgUrl}}" style='left:{{participantImg.positionLeft}};z-index:{{item.participantImgs.length-participantImg.participantImgIndex}}'></image>
+          </block>
+          <view else style="z-index:{{item.participantImgs.length}}">
+            <text>+{{item.participantImgs.length-5}}</text>
+          </view>
+        </view>
+        <button class='parize-draws-details-btn'>
+          <text>详情</text>
+        </button>
+      </view>
+    </block>
+  </view>
+</view>

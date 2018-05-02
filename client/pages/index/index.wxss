@@ -56,6 +56,10 @@
 .index-content>view>navigator{
   border: 1rpx solid #ededed;
 }
+.share-luck-draw{
+  background: none;
+  height: 100%;
+}
 .index-content-one,.index-content-two,.index-content-three{
   float: left;
 }

@@ -2,7 +2,7 @@
 <view class="page">
   <view class='calendar-box'>
     <view class='date-of-today'>
-      <text>2018-4-26</text>
+      <text>{{dateTime}}</text>
     </view>
     <view class='week-group'>
       <view>
@@ -28,14 +28,14 @@
       </view>
     </view>
     <view class='dates-group'>
-      <block wx:for="{{dates}}">
-        <view wx:if="{{item==='12'}}" style='position:relative'>
+      <block wx:for="{{dates}}" wx:item="item">
+        <view wx:if="{{item.dataSigned}}" style='position:relative'>
           <view class='signed-circle'>
-            <text>{{item}}</text>
+            <text>{{item.dayNum}}</text>
           </view>
         </view>
         <view wx:else>
-          <text>{{item}}</text>
+          <text>{{item.dayNum}}</text>
         </view>
       </block>
     </view>
@@ -44,10 +44,11 @@
     <text>100</text><text>积分</text>
   </view>
   <view class='sign-button'>
-    <button>明日签到+2</button>
+    <button wx:if="{{!isSignIn}}" class='sign-in' bindtap='signIn'>签到</button>
+    <button wx:else class='no-sign-in'>明日签到+2</button>
   </view>
   <view class='sign-days'>
-    <text>连续签到1/7天，获取10积分</text>
-    <image src='../../resource/images/did-icon.png'></image>
+    <text>已连续签到{{check_times}}/7天，获取10积分</text>
+    <image src='{{check_times>=7?"../../resource/images/did-icon.png":"../../resource/images/undo-icon.png"}}'></image>
   </view>
 </view>
