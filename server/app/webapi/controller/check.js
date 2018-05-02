@@ -72,7 +72,7 @@ var _class = function (_think$controller$res) {
 
             case 9:
               _context.next = 11;
-              return this.model('user').increment('point', 1);
+              return this.model('user').where({ 'u_id': userId }).increment('point', 1);
 
             case 11:
               _context.next = 32;
@@ -103,7 +103,7 @@ var _class = function (_think$controller$res) {
 
             case 24:
               _context.next = 26;
-              return this.model('user').increment('point', check_times);
+              return this.model('user').where({ 'u_id': userId }).increment('point', check_times);
 
             case 26:
               _context.next = 32;
@@ -115,7 +115,7 @@ var _class = function (_think$controller$res) {
 
             case 30:
               _context.next = 32;
-              return this.model('user').increment('point', 1);
+              return this.model('user').where({ 'u_id': userId }).increment('point', 1);
 
             case 32:
               _context.next = 34;
@@ -164,7 +164,7 @@ var _class = function (_think$controller$res) {
             case 3:
               _post = this.post(), year = _post.year, month = _post.month;
               _context2.next = 6;
-              return this.model('check_log').where('DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
+              return this.model('check_log').where('user_id=' + userId + ' AND DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
 
             case 6:
               MonthHis = _context2.sent;
