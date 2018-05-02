@@ -14,7 +14,7 @@ export default class extends think.controller.rest {
   async indexAction(){
     let userId = think.service('auth').getUserId(this);
     if(!userId)return;
-    let checkInfo = await this.modelInstance.find({user_id:userId});
+    let checkInfo = await this.modelInstance.where({user_id:userId}).find();
     if(think.isEmpty(checkInfo)){
       await this.modelInstance.add({user_id:userId,check_times:1,check_times_total:1});
       await this.model('user').increment('point',1)
