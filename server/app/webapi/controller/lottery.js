@@ -44,29 +44,90 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.currentAction = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-      var userId, currentLotteryInfo;
+      var user, current, user_lottery, lotteryId;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              userId = think.service('auth').getUserId(this);
+              _context.next = 2;
+              return think.service('auth').getUser(this);
 
-              if (userId) {
-                _context.next = 3;
+            case 2:
+              user = _context.sent;
+
+              if (user) {
+                _context.next = 5;
                 break;
               }
 
               return _context.abrupt("return");
 
-            case 3:
-              _context.next = 5;
-              return this.modelInstance.where({ 'owner': userId }).select();
-
             case 5:
-              currentLotteryInfo = _context.sent;
-              return _context.abrupt("return", this.success(currentLotteryInfo));
+              _context.next = 7;
+              return this.modelInstance.where({ 'owner': user.u_id, status: 1 }).find();
 
             case 7:
+              current = _context.sent;
+
+              if (think.isEmpty(current)) {
+                _context.next = 12;
+                break;
+              }
+
+              return _context.abrupt("return", this.success(current));
+
+            case 12:
+              _context.next = 14;
+              return this.modelInstance.where({ 'owner': user.u_id }).select();
+
+            case 14:
+              user_lottery = _context.sent;
+              lotteryId = void 0;
+              // 前三次免费
+              // status: 0可以开奖,1人数不够开奖,2已经开过奖
+
+              if (!(user_lottery.length <= 3)) {
+                _context.next = 22;
+                break;
+              }
+
+              _context.next = 19;
+              return this.modelInstance.add({ 'owner': user.u_id, status: 1 });
+
+            case 19:
+              lotteryId = _context.sent;
+              _context.next = 31;
+              break;
+
+            case 22:
+              if (!(user.point > 10)) {
+                _context.next = 30;
+                break;
+              }
+
+              _context.next = 25;
+              return this.model('user').where({ 'u_id': user.u_id }).decrement('point', 10);
+
+            case 25:
+              _context.next = 27;
+              return this.modelInstance.add({ 'owner': user.u_id, status: 1 });
+
+            case 27:
+              lotteryId = _context.sent;
+              _context.next = 31;
+              break;
+
+            case 30:
+              return _context.abrupt("return", this.fail('积分不足以发起抽奖'));
+
+            case 31:
+              _context.next = 33;
+              return this.model('user_lottery').add({ 'user_id': user.u_id, lottery_id: lotteryId });
+
+            case 33:
+              return _context.abrupt("return", this.success({ id: lotteryId, status: 1 }));
+
+            case 34:
             case "end":
               return _context.stop();
           }
