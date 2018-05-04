@@ -26,13 +26,13 @@ Page({
   onShow: function () {
     var winW = wx.getSystemInfoSync().screenWidth;
     var winH = wx.getSystemInfoSync().screenHeight;
-    var conH = winH / winW * 750 - 650;
+    var conH = winH / winW * 750 - 623;
 
     // console.log("conH", conH)
     this.setData({
       conH: conH,
-      height1: conH / 2 + "rpx",
-      height2: (conH - 240) / 2 + "rpx"
+      height1: conH / 2,
+      height2: (conH - 240) / 2
     })
   },
   getMoreJiFen: function () {

@@ -120,4 +120,5 @@
 .index-footer image:nth-child(2){
   width: 750rpx;
   height: 285rpx;
+  margin-top:-8rpx;
 }

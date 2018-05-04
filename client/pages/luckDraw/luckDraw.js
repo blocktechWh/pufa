@@ -95,6 +95,11 @@ Page({
       })
       return false;
     }
+    util.http_post(url.StartLuckDraw, {
+      lotteryId: _this.data.lotteryId
+    },res => {
+      console.log("开奖", res);
+    })
     _this.data.angleOfSingleTime = 4;
     var runTime = Math.ceil(2700 + 900 * Math.random());
     console.log("runTime", runTime)

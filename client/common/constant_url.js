@@ -8,5 +8,6 @@ module.exports = {
   CheckHistory: host + '/check/history',//获取某个月的签到历史
 
   LuckDrawInfo: host + '/lottery/current',//获取抽奖信息
-  JionLuckDraw: host + '/lottery/join'//加入抽奖
+  JionLuckDraw: host + '/lottery/join',//加入抽奖
+  StartLuckDraw: host + '/lottery/start'//加入抽奖
 }

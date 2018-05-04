@@ -7,32 +7,32 @@
   </view>
   <view class='{{index_content}}' style='height:{{conH+"rpx"}}'>
     <view class='index-content-one'>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/signIn/signIn'>
-        <image src='../../resource/images/sign_in_icon.png' style='margin-top:92rpx'></image>
+      <navigator class='menu-box menu-box-one' style='height:{{height1+"rpx"}}' url='../../pages/signIn/signIn'>
+        <image src='../../resource/images/sign_in_icon.png' style='margin-top:{{(height1-130)/2}}rpx'></image>
       </navigator>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url="../../pages/myPrizes/myPrizes">
-        <image src='../../resource/images/my_prize_icon.png' style='margin-top:92rpx'></image>
+      <navigator class='menu-box menu-box-one' style='height:{{height1+"rpx"}}' url="../../pages/myPrizes/myPrizes">
+        <image src='../../resource/images/my_prize_icon.png' style='margin-top:{{(height1-130)/2}}rpx'></image>
       </navigator>
     </view>
     <view class='index-content-two'>
-      <navigator class='menu-box menu-box-two' style='height:{{height2}}' url='../../pages/extensionReward/extensionReward'>
-        <image src='../../resource/images/extension_award_icon.png' style='margin-top:36rpx'></image>
+      <navigator class='menu-box menu-box-two' style='height:{{height2+"rpx"}}' url='../../pages/extensionReward/extensionReward'>
+        <image src='../../resource/images/extension_award_icon.png' style='margin-top:{{(height2-127)/2}}rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-three' url='../../pages/luckDraw/luckDraw'>
         <image src='../../resource/images/luck_draw_icon.png' style='margin-top:36rpx'></image>
       </navigator>
-      <navigator class='menu-box menu-box-two' style='height:{{height2}}'>
+      <navigator class='menu-box menu-box-two' style='height:{{height2+"rpx"}}'>
         <button class='share-luck-draw' open-type='share'>
-          <image src='../../resource/images/Invitation_icon.png' style='margin-top:36rpx'></image>
+          <image src='../../resource/images/Invitation_icon.png' style='margin-top:{{(height2-127)/2}}rpx'></image>
         </button>
       </navigator>
     </view>
     <view class='index-content-three'>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/LuckDrawActions/LuckDrawActions'>
-        <image src='../../resource/images/luck_draw_history_icon.png' style='margin-top:92rpx'></image>
+      <navigator class='menu-box menu-box-one' style='height:{{height1+"rpx"}}' url='../../pages/LuckDrawActions/LuckDrawActions'>
+        <image src='../../resource/images/luck_draw_history_icon.png' style='margin-top:{{(height1-130)/2}}rpx'></image>
       </navigator>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/moreJiFen/moreJiFen'>
-        <image src='../../resource/images/get_more_jifen.png' style='margin-top:92rpx'></image>
+      <navigator class='menu-box menu-box-one' style='height:{{height1+"rpx"}}' url='../../pages/moreJiFen/moreJiFen'>
+        <image src='../../resource/images/get_more_jifen.png' style='margin-top:{{(height1-130)/2}}rpx'></image>
       </navigator>
     </view>
     <view class='clear'></view>
