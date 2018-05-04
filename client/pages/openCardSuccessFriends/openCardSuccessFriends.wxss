@@ -1,0 +1,29 @@
+/* pages/openCardSuccessFriends/openCardSuccessFriends.wxss */
+.friends-list-container>view{
+  position: relative;
+  height: 180rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid rgb(242, 242, 242)
+}
+ .friends-list-container>view>view{
+  height: 180rpx;
+  float: left;
+
+}
+.friends-list-container>view>view:first-of-type image{
+  width: 92rpx;
+  height: 92rpx;
+  margin: 44rpx 30rpx;
+  border-radius: 46rpx;
+}
+.friends-list-container>view>view:nth-child(2){
+  line-height: 180rpx;
+  font-size: 30rpx;
+}
+.friends-list-container>view>image{
+  position: absolute;
+  width: 42rpx;
+  height: 42rpx;
+  top: 69rpx;
+  right: 30rpx;
+} 

@@ -10,12 +10,12 @@
       <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/signIn/signIn'>
         <image src='../../resource/images/sign_in_icon.png' style='margin-top:92rpx'></image>
       </navigator>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}'>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url="../../pages/myPrizes/myPrizes">
         <image src='../../resource/images/my_prize_icon.png' style='margin-top:92rpx'></image>
       </navigator>
     </view>
     <view class='index-content-two'>
-      <navigator class='menu-box menu-box-two' style='height:{{height2}}' >
+      <navigator class='menu-box menu-box-two' style='height:{{height2}}' url='../../pages/extensionReward/extensionReward'>
         <image src='../../resource/images/extension_award_icon.png' style='margin-top:36rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-three' url='../../pages/luckDraw/luckDraw'>
@@ -28,7 +28,7 @@
       </navigator>
     </view>
     <view class='index-content-three'>
-      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/myPrizeDraws/myPrizeDraws'>
+      <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/LuckDrawActions/LuckDrawActions'>
         <image src='../../resource/images/luck_draw_history_icon.png' style='margin-top:92rpx'></image>
       </navigator>
       <navigator class='menu-box menu-box-one' style='height:{{height1}}' url='../../pages/moreJiFen/moreJiFen'>

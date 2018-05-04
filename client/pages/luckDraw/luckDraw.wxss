@@ -43,6 +43,7 @@
 .runner .circle .user image {
   width: 80rpx;
   height: 80rpx;
+  border-radius: 40rpx;
   margin: 20rpx 40rpx;
 }
 
@@ -67,7 +68,7 @@
   text-align: center;
   color: #fff;
   font-size: 28rpx;
-  margin-top:-50rpx;
+  margin-top:-60rpx;
 
 }
 .game-rule-container {
@@ -75,7 +76,7 @@
   width: 600rpx;
   height: 56rpx;
   margin: 0 auto;
-  margin-top:50rpx;
+  margin-top:30rpx;
 }
 
 .game-rule-container>view:first-of-type {
@@ -97,16 +98,29 @@
   position: absolute;
   z-index: 1;
   width: 580rpx;
-  height: 56rpx;
   color: rgb(146, 105, 17);
   font-size: 20rpx;
   background-color: rgb(237, 244, 170);
-  line-height: 56rpx;
-  text-align: center;
-  padding-left: 35rpx;
+  margin-top: 40rpx;
+  padding-left: 30rpx;
+  padding: 50rpx 20rpx 15rpx 20rpx;
   right: 0;
-  top: 0;
+  top: -40rpx;
   border-radius: 14rpx;
+}
+.mar-top{
+  margin-top: 8rpx;
+}
+.invitation-btn button{
+  background: none;
+  margin-top:220rpx;
+  border: none;
+  color: #fff;
+  font-size: 26rpx;
+}
+.invitation-btn button image{
+  width: 26rpx;
+  height: 26rpx;
 }
 
 .model-container {

@@ -1,0 +1,144 @@
+/* pages/LuckDrawDetail/LuckDrawDetail.wxss */
+.page {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.bac-img {
+  width: 750rpx;
+  height: 100%;
+}
+.detail-container{
+  position: absolute;
+  width: 690rpx;
+  top: 0;
+  left: 30rpx;
+}
+.detail-container .winner{
+  position: relative;
+  height: 400rpx;
+  margin-top: 142rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+
+}
+.detail-container .winner .winner-img{
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 70rpx;
+  box-sizing: content-box;
+  border: 10rpx solid rgba(255, 255, 255, 0.5);
+  top: -60rpx;
+  left: 285rpx;
+}
+.detail-container .winner .prize-box{
+  margin-top: 80rpx;
+
+}
+.detail-container .winner .prize-box>view:first-of-type{
+  padding-top: 80rpx;
+  font-size: 32rpx;
+  color: rgb(90, 90, 90);
+}
+.detail-container .winner .prize-box>view:nth-child(2){
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: rgb(90, 90, 90);
+}
+.detail-container .winner .prize-box .prize{
+  background-color: rgb(235, 233, 233);
+  border-radius: 20rpx;
+  height: 150rpx;
+  width: 600rpx;
+  margin: 20rpx auto;
+}
+.detail-container .winner .prize-box .prize>view{
+  float: left;
+  height: 150rpx;
+  line-height: 150rpx;
+  color: rgb(57, 58, 62);
+  font-size: 24rpx;
+}
+.detail-container .winner .prize-box .prize>view image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 25rpx;
+  
+}
+.detail-container .creater .creater-title{
+  margin-top: 18rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 24rpx;
+  color: #fff;
+
+}
+.detail-container .creater .creater-box{
+  position: relative;
+  background-color: #fff;
+  height: 120rpx;
+
+}
+.detail-container .creater .creater-box>view{
+  float: left;
+  height: 120rpx;
+}
+.detail-container .creater .creater-box .creater-box-head image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  margin: 15rpx;
+}
+.detail-container .creater .creater-box .creater-box-time>view{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.detail-container .creater .creater-box .creater-box-time>view:first-of-type{
+  font-size: 30rpx;
+}
+.detail-container .creater .creater-box .creater-box-time>view:nth-child(2){
+  font-size: 20rpx;
+}
+.detail-container .creater .creater-box>image{
+  position: absolute;
+  width: 42rpx;
+  height: 42rpx;
+  top: 39rpx;
+  right: 30rpx;
+}
+.detail-container .joiners-box{
+  margin-top: 56rpx;
+}
+
+.detail-container .joiners-box .jioner-title{
+  font-size: 24rpx;
+  color: #fff;
+}
+.detail-container .joiners-box .jioners{
+  height: 160rpx;
+  background-color: #fff;
+  margin-top: 8rpx;
+}
+.detail-container .joiners-box .jioners>view{
+  width: 138rpx;
+  float: left;
+  position: relative;
+}
+.jioner>view:first-of-type>image{
+  height: 90rpx;
+  width: 90rpx;
+  margin: 20rpx 24rpx -18rpx 24rpx;
+}
+.jioner>view:nth-child(2){
+  font-size: 30rpx;
+}
+.jioner>image:nth-child(3){
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  right: 0;
+  top: 72rpx;
+}

@@ -1,47 +1,37 @@
-// pages/extensionReward/extensionReward.js
-
+// pages/LuckDrawDetail/LuckDrawDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    participantImgs: [
+    jionersList:[
       {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "30rpx",
-        participantImgIndex: 0
-
+        jionerImg:"../../resource/images/head.png",
+        jionerName:"Marven",
+        isWinner:false
       },
       {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "65rpx",
-        participantImgIndex: 1
+        jionerImg: "../../resource/images/head.png",
+        jionerName: "Marven",
+        isWinner: false
       },
       {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "90rpx",
-        participantImgIndex: 2
+        jionerImg: "../../resource/images/head.png",
+        jionerName: "Marven",
+        isWinner: true
       },
       {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "125rpx",
-        participantImgIndex: 3
+        jionerImg: "../../resource/images/head.png",
+        jionerName: "Marven",
+        isWinner: false
       },
       {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "160rpx",
-        participantImgIndex: 4
-      },
-      {
-        participantImgUrl: "../../resource/images/head.png",
-        positionLeft: "195rpx",
-        participantImgIndex: 5
-      },
-
+        jionerImg: "../../resource/images/head.png",
+        jionerName: "Marven",
+        isWinner: false
+      }
     ]
-      
-
   },
 
   /**

@@ -140,7 +140,7 @@ Page({
   countInterval: function () {
     // 设置倒计时 定时器 每40毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
     this.countTimer = setInterval(() => {
-      if (this.data.count <= 50) {
+      if (this.data.count <= 30) {
         /* 绘制彩色圆环进度条 
         注意此处 传参 step 取值范围是0到2，
         所以 计数器 最大值 50 对应 2 做处理，计数器steps=50的时候step=2
@@ -161,7 +161,7 @@ Page({
       }
     }, 40)
   },
-  countStepsInterval: function (ind) {
+  countStepsInterval: function () {
     var _this = this;
     //_this.countStepsInterval(ind+1);
     // 设置倒计时 定时器 每40毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
@@ -173,7 +173,7 @@ Page({
         所以 计数器 最大值 50 对应 2 做处理，计数器count=50的时候step=2
         */
         //var index = _this.data.stepsIndex,
-        var index = ind,
+        var index = _this.data.stepsIndex,
           stepsInfoList = _this.data.stepsInfoList,
           drawLong = (_this.data.stepsCount / 50) * 100 * (stepsInfoList[index].steps / 10000) * (_this.data.stepsCount / 50);
 
@@ -188,10 +188,10 @@ Page({
         })
         _this.drawStepsbg(drawLong, index + 1);
 
-      // } else if (_this.data.stepsIndex < 6) {
-      //   _this.data.stepsIndex++;
-      //   console.log("_this.data.stepsIndex", _this.data.stepsIndex)
-      //   _this.data.stepsCount = 0;
+      } else if (_this.data.stepsIndex < 6) {
+        _this.data.stepsIndex++;
+        console.log("_this.data.stepsIndex", _this.data.stepsIndex)
+        _this.data.stepsCount = 0;
 
       } else {
         clearInterval(_this.countTimer1);
@@ -210,43 +210,17 @@ Page({
       _this.setData({
         tabState: "history"
       })
-      const worker = wx.createWorker('../../utils/test.js');  
+      //const worker = wx.createWorker('../../utils/test.js');  
 
-      console.log(worker)
-      // setTimeout(function(){
-      //   _this.countStepsInterval(0)
-      // }, 10);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(1)
-      // }, 20);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(2)
-      // }, 30);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(3)
-      // }, 40);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(4)
-      // }, 50);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(5)
-      // }, 60);
-      // setTimeout(function () {
-      //   _this.countStepsInterval(6)
-      // }, 70);
-      // var a1 =setTimeout(_this.countStepsInterval(1), 1);
-      // var a2 =setTimeout(_this.countStepsInterval(2), 1);
-      // var a3 =setTimeout(_this.countStepsInterval(3), 1);
-      // var a4 =setTimeout(_this.countStepsInterval(4), 1);
-      // var a5 =setTimeout(_this.countStepsInterval(5), 1);
-      // var a6 =setTimeout(_this.countStepsInterval(6), 1);
-      _this.countStepsInterval(0);
-      _this.countStepsInterval(1);
-      _this.countStepsInterval(2);
-      _this.countStepsInterval(3);
-      _this.countStepsInterval(4);
-      _this.countStepsInterval(5);
-      _this.countStepsInterval(6);
+      //console.log(worker)
+
+      _this.countStepsInterval();
+      // _this.countStepsInterval(1);
+      // _this.countStepsInterval(2);
+      // _this.countStepsInterval(3);
+      // _this.countStepsInterval(4);
+      // _this.countStepsInterval(5);
+      // _this.countStepsInterval(6);
  
     }
   },

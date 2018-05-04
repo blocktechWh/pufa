@@ -108,7 +108,7 @@
   position: relative;
   height: 285rpx;
   width: 750rpx;
-  background-color: blue
+  background-color: #ccc;
 }
 .index-footer image:nth-child(1){
   position: absolute;

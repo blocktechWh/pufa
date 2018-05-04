@@ -1,58 +1,29 @@
 // pages/luckDraw/luckDraw.js
+const util = require('../../common/util.js');
+const url = require('../../common/constant_url.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    lotteryId:0,
     runAngle: 0,
     angleOfSingleTime: 4,
     gameIsOver: false,
-    users: [
-      {
-        name: 1,
-        head: "../../resource/images/head.png",
-        zIndex:1,
-        rotate:0
-      },
-      {
-        name: 2,
-        head: "../../resource/images/head.png",
-        zIndex: 2,
-        rotate: "60deg"
-      },
-      {
-        name: 3,
-        head: "../../resource/images/head.png",
-        zIndex: 3,
-        rotate: "120deg"
-      },
-      {
-        name: 4,
-        head: "../../resource/images/head.png",
-        zIndex: 4,
-        rotate: "180deg"
-      },
-      {
-        name: 5,
-        head: "../../resource/images/head.png",
-        zIndex: 5,
-        rotate: "240deg"
-      },
-      {
-        name: 6,
-        head: "../../resource/images/head.png",
-        zIndex: 6,
-        rotate: "300deg"
-      }
-    ],
-    name:""
+    users: [],
+    name:"",
+    canOpen:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _this=this;
+    
+    //获取抽奖信息
+    _this.queryLuckDrawInfo();
 
   },
 
@@ -62,16 +33,68 @@ Page({
   onReady: function () {
 
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     this.data.runAngle = 0;
   },
+  queryLuckDrawInfo: function () { 
+    var _this=this;
+    var users = [];
+    
+    util.http_get(url.LuckDrawInfo, res => {
+      console.log("抽奖信息", res);
+      _this.data.lotteryId=res.data.id;
+      //渲染用户
+      var joiner = res.data.joiner;
+      for (var i = 0; i < 6;i++){
+        if (i < joiner.length){
+          users.push({
+            name: joiner[i].user.name,
+            head: joiner[i].user.image_url,
+            zIndex: i + 1,
+            rotate: i * 60 + "deg",
+            u_id: joiner[i].user.u_id
+          })
+        }else{
+          users.push({
+            name: "等待加入",
+            head: "../../resource/images/no_jioner.png",
+            zIndex: i + 1,
+            rotate: i * 60 + "deg",
+            u_id: ""
+          })
+        }
 
+      }
+      _this.setData({
+        users: users
+      })
+
+      //抽奖状态
+      var status = res.data.status;
+
+      if (status === 0) {//可以开奖
+        _this.data.canOpen = true;
+      } else if (status === 1) {//人数不足
+        _this.data.canOpen = false;
+      } else if (status === 2) {//已创建抽奖
+        _this.data.canOpen = joiner.length < 6?false:true;
+      }
+    })
+  },
   startGame: function () {
     var _this = this;
+    if (!_this.data.canOpen){
+      wx.showModal({
+        title: '提示',
+        content: '参与人数不足，添加好友后再开奖吧',
+        showCancel:false
+      })
+      return false;
+    }
     _this.data.angleOfSingleTime = 4;
     var runTime = Math.ceil(2700 + 900 * Math.random());
     console.log("runTime", runTime)
@@ -159,10 +182,10 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target)
     }
+    console.log(333)
     return {
       title: '拼团抽奖送好礼！',
-      //path: 'http://dingyeap.com/api/joinAction?id=' + this.data.id,
-      path: '/pages/detail2/detail2?shareActionId=' + this.data.id,
+      path: '/pages/LuckDrawActions/LuckDrawActions?lotteryId=' + _this.data.lotteryId,
       success: function (res) {
         // 转发成功
         console.log("转发成功");
@@ -209,11 +232,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
