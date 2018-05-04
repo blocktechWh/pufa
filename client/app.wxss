@@ -32,6 +32,9 @@ page{
     padding: 40px;
    
 }
+.text-center{
+  text-align: center;
+}
 .page__bd {
     padding-bottom: 40px;
 }

@@ -1,0 +1,11 @@
+<!--pages/answerResult/answerResult.wxml-->
+<view class='page'>
+  <image src='../../resource/images/header-bac.png' class='bac-img'></image>
+  <view class='result-container'>
+    <view class='text-center'><text>您一共答对</text></view>
+    <view class='text-center'><text>6道题</text></view>
+    <view class='text-center'><text>恭喜你完成</text></view>
+    <view class='text-center'><text>答题得积分任务</text></view>
+    <button catchtap='iKhow'>确定</button>
+  </view>
+</view>

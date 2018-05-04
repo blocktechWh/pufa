@@ -1,0 +1,20 @@
+<!--pages/openCardSuccessFriends/openCardSuccessFriends.wxml-->
+<view class='page'>
+  <scroll-view scroll-y="false" enable-back-to-top="false">
+    <view class='friends-list-container'>
+      <block wx:for="{{friendsList}}">
+        <view>
+          <view class='head-img'>
+             <image src='{{item.headImg}}'></image> 
+          </view>
+          <view class='head-name'>
+            <text>{{item.headName}}</text>
+          </view>
+           <image src='../../resource/images/{{item.isSuccess?"did-icon.png":"undo-icon.png"}}'></image> 
+        </view>
+      </block>
+    </view>
+
+  </scroll-view>
+
+</view>

@@ -1,26 +1,37 @@
 <!--pages/extensionReward/extensionReward.wxml-->
 <view class='page'>
-  <view class='prize-draw-container'>
-    <block wx:for="{{prizeDrawList}}">
-      <view class='prize-draw-item'>
-        <view>
-          <image src='{{item.initiatorImgUrl}}'></image>
-        </view>
-        <view>
-          <text>{{item.initiatorName}}</text>
-        </view>
-        <view>
-          <block wx:for="{{item.participantImgs}}" wx:for-item="participantImg">
-            <image wx:if="{{participantImg.participantImgIndex<5}}" src="{{participantImg.participantImgUrl}}" style='left:{{participantImg.positionLeft}};z-index:{{item.participantImgs.length-participantImg.participantImgIndex}}'></image>
-          </block>
-          <view else style="z-index:{{item.participantImgs.length}}">
-            <text>+{{item.participantImgs.length-5}}</text>
-          </view>
-        </view>
-        <button class='parize-draws-details-btn'>
-          <text>详情</text>
-        </button>
+  <navigator class='prize-draw-item' url='../../pages/openCardSuccessFriends/openCardSuccessFriends'>
+    <view>
+      <view>
+        <text>邀请好友推广给他们</text>
       </view>
-    </block>
+      <view>
+        <text>已经有{{participantImgs.length}}位新好友加入</text>
+      </view>
+    </view>
+    <view>
+      <block wx:for="{{participantImgs}}" wx:for-item="participantImg">
+        <image wx:if="{{participantImg.participantImgIndex<3}}" src="{{participantImg.participantImgUrl}}" style='left:{{participantImg.positionLeft}};z-index:{{participantImgs.length-participantImg.participantImgIndex}}'></image>
+      </block>
+      <view else style="z-index:{{participantImgs.length}}">
+        <text>+{{participantImgs.length-3}}</text>
+      </view>
+    </view>
+    <image src='../../resource/images/double_arrow_icon.png' alt="双箭头"></image>
+    <image src='../../resource/images/head-bac1.png' alt="背景图"></image>
+  </navigator>
+  <view class='task-container'>
+    <view>
+      <text>邀请1个好友办卡(获得20积分)</text>
+      <image src='../../resource/images/{{participantImgs.length>=1?"did-icon.png":"undo-icon.png"}}'></image>
+    </view>
+    <view>
+      <text>邀请5个好友办卡(获得xxx)</text>
+      <image src='../../resource/images/{{participantImgs.length>=5?"did-icon.png":"undo-icon.png"}}'></image>
+    </view>
+    <view>
+      <text>邀请10个好友办卡(获得xxx)</text>
+      <image src='../../resource/images/{{participantImgs.length>=10?"did-icon.png":"undo-icon.png"}}'></image>
+    </view>
   </view>
 </view>

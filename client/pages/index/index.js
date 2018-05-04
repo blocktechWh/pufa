@@ -1,20 +1,20 @@
 var request = require('../../utils/request.js');
-const app=getApp();
+const app = getApp();
 
 Page({
   data: {
-    height1:"",
-    height2:"",
-    index_content:"index-content"
+    height1: "",
+    height2: "",
+    index_content: "index-content"
   },
-  onLoad:function(){
-    var self=this;
+  onLoad: function () {
+    var self = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else{
+    } else {
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res,
@@ -23,44 +23,45 @@ Page({
       }
     }
   },
-  onShow:function(){
+  onShow: function () {
     var winW = wx.getSystemInfoSync().screenWidth;
     var winH = wx.getSystemInfoSync().screenHeight;
-    var conH=winH/winW*750-650;
+    var conH = winH / winW * 750 - 623;
 
     // console.log("conH", conH)
     this.setData({
       conH: conH,
-      height1: conH/2+"rpx",
-      height2: (conH-240) / 2 + "rpx"
+      height1: conH / 2,
+      height2: (conH - 240) / 2
     })
   },
-  getMoreJiFen:function(){
+  getMoreJiFen: function () {
     wx.navigateTo({
       url: '../steps/steps',
     })
   },
-  example:function(){
+  example: function () {
     wx.navigateTo({
       url: '../../weui/dist/example/grid/grid',
     })
   },
-  openOnline:function(){
-    wx.navigateTo({
-      url: '../../pages/openOnline/openOnline',
+  openOnline: function () {
+    wx.showModal({
+      title: '提示',
+      showCancel:false,
+      content: '跳转到' + '"' + '浦发信用卡' + '"' +'小程序办理',
     })
   },
-    onShareAppMessage: function (res) {
+  onShareAppMessage: function (res) {
     var _this = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res)
-      console.log(res.target)
+      console.log(res);
+      console.log(res.target);
     }
     return {
       title: '拼团抽奖送好礼！',
-      //path: 'http://dingyeap.com/api/joinAction?id=' + this.data.id,
-      path: '/pages/detail2/detail2?shareActionId=' + this.data.id,
+      path: '/pages/luckDraw/luckDraw?shareActionId=1',
       success: function (res) {
         // 转发成功
         console.log("转发成功");
@@ -81,5 +82,5 @@ Page({
     }
   },
 
-  
+
 })

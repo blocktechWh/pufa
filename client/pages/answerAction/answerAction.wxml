@@ -1,0 +1,14 @@
+<!--pages/answerAction/answerAction.wxml-->
+<view class='page'>
+  <image src='../../resource/images/header-bac.png' class='bac-img'></image>
+  <view class='question-container'>
+    <view class='question'>
+      <text>{{topic.qustion}}</text>
+    </view>
+    <view class='selects'>
+      <block wx:for="{{topic.answerSelects}}">
+          <view catchtap='answerResult'><text>{{item.answerText}}</text></view>
+      </block>
+    </view>
+  </view>
+</view>

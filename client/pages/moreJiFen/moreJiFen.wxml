@@ -12,7 +12,7 @@
       <text>运动得积分(+2)</text>
       <image src='../../resource/images/undo-icon.png'></image>
     </navigator>
-    <navigator url='../../pages/signIn/signIn'>
+    <navigator url='../../pages/answerAction/answerAction'>
       <text>答题得积分(+2)</text>
       <image src=' ../../resource/images/undo-icon.png '></image>
     </navigator> 

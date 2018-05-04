@@ -17,7 +17,7 @@
             <text>+{{item.participantImgs.length-5}}</text>
           </view>
         </view>
-        <button class='parize-draws-details-btn'>
+        <button class='parize-draws-details-btn' bindtap='luckDrawDetail'>
           <text>详情</text>
         </button>
       </view>

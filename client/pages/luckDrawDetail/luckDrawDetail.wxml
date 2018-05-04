@@ -1,0 +1,61 @@
+<!--pages/LuckDrawDetail/LuckDrawDetail.wxml-->
+<view class='page'>
+  <image src='../../resource/images/header-bac.png' class='bac-img'></image>
+  <view class='detail-container'>
+    <view class='winner'>
+      <image class='winner-img' src='../../resource/images/head1.png'></image>
+      <view class='prize-box'>
+        <view class='text-center'>
+          <text>Creeps</text>
+        </view>
+        <view class='text-center'>
+          <text>在抽奖中获得</text>
+        </view>
+        <view class='prize'>
+          <view>
+            <image src='../../resource/images/prize1.png'></image>
+          </view>
+          <view>
+            <text>电子产品</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <view class='creater'>
+      <view class='text-center creater-title'>
+        <text>发起玩家</text>
+      </view>
+      <view class='creater-box'>
+        <view class='creater-box-head'>
+          <image src='../../resource/images/head1.png'></image>
+        </view>
+        <view class='creater-box-time'>
+          <view>
+            <text>poster</text>
+          </view>
+          <view>
+            <text>发起时间：2018-8-10</text>
+          </view>
+        </view>
+        <image src='../../resource/images/did-icon.png'></image>
+      </view>
+    </view>
+    <view class='joiners-box'>
+      <view class='text-center jioner-title'>
+        <text>参与玩家</text>
+      </view>
+      <view class='jioners'>
+        <block wx:for="{{jionersList}}">
+          <view class='jioner'>
+            <view>
+              <image src="{{item.jionerImg}}"></image>
+            </view>
+            <view class='text-center'><text>{{item.jionerName}}</text></view>
+            <image wx:if="{{item.isWinner}}" src='../../resource/images/prize2.png'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

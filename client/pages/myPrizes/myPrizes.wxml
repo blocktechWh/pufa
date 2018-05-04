@@ -1,0 +1,43 @@
+<!--pages/myPrizes/myPrizes.wxml-->
+<view class='page'>
+  <view class='nav-tabs-container'>
+    <view class='slider' style='margin-left:{{marginLeft}}'>
+    </view>
+    <view class='tabs'>
+      <view bindtap='tabClick' data-index="1" style='color:{{tabColor1}}'>
+        <text>未领取</text>
+      </view>
+      <view bindtap='tabClick' data-index="2" style='color:{{tabColor2}}'>
+        <text>已领取</text>
+      </view>
+    </view>
+  </view>
+  <view class='prize-container'>
+    <scroll-view class='prize-got' style='left:{{left1}}'>
+      <block wx:for="{{prizeList1}}">
+        <view class='prize'>
+          <view>
+            <image src='{{item.prizeImg}}'></image>
+          </view>
+          <view>
+            <text>{{item.prizeName}}</text>
+          </view>
+          <button bindtap='recieveNow'>立即领取</button>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view class='prize-no-got' style='left:{{left2}}'>
+      <block wx:for="{{prizeList2}}">
+        <view class='prize'>
+          <view>
+            <image src='{{item.prizeImg}}'></image>
+          </view>
+          <view>
+            <text>{{item.prizeName}}</text>
+          </view>
+          <view><text>{{item.gotTime}}</text></view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

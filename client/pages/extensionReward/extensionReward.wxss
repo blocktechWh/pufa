@@ -3,71 +3,84 @@
 .prize-draw-item {
   position: relative;
   background-color: #fff;
-  padding: 0 30rpx;
-  height: 150rpx;
+  height: 180rpx;
   margin-top: 20rpx;
 }
 
-.prize-draw-item>view {
-  height: 150rpx;
-  float: left;
-}
-
 .prize-draw-item>view:first-of-type {
-  width: 90rpx;
+  position: absolute;
+  color: #fff;
+  height: 180rpx;
+  padding-top: 50rpx;
+  padding-left: 72rpx;
+  top: 0;
+  left: 0;
 }
 
-.prize-draw-item>view:first-of-type image {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 45rpx;
-  margin: 30rpx auto;
-  border: 2rpx solid #ccc;
-}
-
-.prize-draw-item>view:nth-child(2) {
-  line-height: 150rpx;
+.prize-draw-item>view:first-of-type>view:first-of-type {
   font-size: 28rpx;
-  color: rgb(111, 127, 132);
-  padding-left: 12rpx;
 }
 
-.prize-draw-item>view:nth-child(3) {
-  position: relative;
+.prize-draw-item>view:first-of-type>view:nth-child(2) {
+  font-size: 24rpx;
+}
+.prize-draw-item>view:nth-child(2){
+  position: absolute;
+  height: 180rpx;
+  top: 0;
+  left: 350rpx;
 }
 
-.prize-draw-item>view:nth-child(3) image {
+.prize-draw-item>image:nth-child(3) {
+  position: absolute;
+  width: 26rpx;
+  height: 28rpx;
+  top: 76rpx;
+  right: 30rpx;
+}
+
+.prize-draw-item>image:nth-child(4) {
+  width: 100%;
+  height: 100%;
+}
+
+
+.prize-draw-item>view:nth-child(2) image {
   position: absolute;
   width: 58rpx;
   height: 58rpx;
   border-radius: 29rpx;
-  top: 46rpx;
+  top: 61rpx;
   border: 2rpx solid #ccc;
 }
 
-.prize-draw-item>view:nth-child(3)>view {
+.prize-draw-item>view:nth-child(2)>view {
   position: absolute;
   width: 58rpx;
   height: 58rpx;
   border-radius: 29rpx;
-  top: 46rpx;
+  border: 2rpx solid #fff;
+  top: 61rpx;
   background-color: rgb(68, 109, 255);
   color: rgb(254, 254, 254);
   font-size: 22rpx;
-  left: 210rpx;
+  left: 140rpx;
   line-height: 58rpx;
   text-align: center;
 }
-
-.parize-draws-details-btn {
+.task-container>view{
+  background: #fff;
+  position: relative;
+  margin-top: 20rpx;
+  height: 120rpx;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  line-height: 120rpx;
+}
+.task-container>view image{
   position: absolute;
-  width: 114rpx;
-  height: 54rpx;
-  border-radius: 5rpx;
-  background-color: rgb(68, 109, 255);
-  color: rgb(254, 254, 254);
-  line-height: 54rpx;
-  font-size: 24rpx;
-  top: 48rpx;
+  width: 42rpx;
+  height: 42rpx;
+  top: 39rpx;
   right: 30rpx;
 }
