@@ -15,9 +15,9 @@ export default class extends think.controller.rest {
   }
 
   async currentAction(){
-    let user = await think.service('auth').getUser(this)
+    let user = await think.service('auth').getUser(this);
     if(!user)return;
-    let current = await this.modelInstance.where({'owner': user.u_id,status:1}).find();
+    let current = await this.modelInstance.where({'owner': user.u_id,status:['!=',2]}).find();
     //如果有进行中的活动直接返回
     if(!think.isEmpty(current)){
       return this.success(current);
@@ -40,19 +40,35 @@ export default class extends think.controller.rest {
   }
 
   async joinAction(){
-    let userId = think.service('auth').getUserId(this)
-    let { lotteryId } = this.post()
-    let lotteryInfo = await this.model('user_lottery').where({user_id:userId,lottery_id:lotteryId}).find();
-    if(think.isEmpty(lotteryInfo)){
-      await this.model('user_lottery').add({user_id:userId,lottery_id:lotteryId})
-      return this.success('成功加入');
+    let userId = think.service('auth').getUserId(this);
+    let { lotteryId } = this.post();
+    let lottery = await this.modelInstance.where({'id': lotteryId}).find();
+    if(think.isEmpty(lottery))return this.fail('无效抽奖编号');
+    if(lottery.status===2){
+      return this.fail('该抽奖已经结束');
+    }else if(lottery.joiner.length>=6){
+      return this.fail('参与人数已满');
     }else{
-      return this.fail('你已经加入过了');
+      let lotteryInfo = await this.model('user_lottery').where({user_id:userId,lottery_id:lotteryId}).find();
+      if(think.isEmpty(lotteryInfo)){
+        await this.model('user_lottery').add({user_id:userId,lottery_id:lotteryId});
+        if(lottery.joiner.length==5)await this.modelInstance.where({'id': lotteryId}).update({status:0});
+        return this.success('成功加入');
+      }else{
+        return this.fail('你已经加入过了');
+      }
     }
   }
 
   async startAction(){
-    
+    let userId = think.service('auth').getUserId(this);
+    let { lotteryId } = this.post();
+    let lottery = await this.modelInstance.where({'id': lotteryId,'owner': userId,status:0}).find();
+    if(think.isEmpty(lottery))return this.fail('无效抽奖编号');
+    let winner = lottery.joiner[Math.floor(Math.random()*6)];
+    let prize = 0;
+    await this.modelInstance.where({'id': lotteryId}).update({winner:winner.user_id,status:2,prize})
+    return this.success({winner,prize});
   }
 
   async historyAction(){
@@ -60,7 +76,10 @@ export default class extends think.controller.rest {
   }
 
   async myAction(){
-
+    let userId = think.service('auth').getUserId(this);
+    let lotteryIdList = await this.model('user_lottery').where({user_id:userId}).getField('lottery_id',false);
+    let my = await this.modelInstance.where({id: ['IN', lotteryIdList]}).select();
+    return this.success(my);
   }
 
 }

@@ -99,7 +99,7 @@ var _class = function (_think$controller$res) {
 
               check_times_total = checkInfo.check_times_total + 1;
               _context.next = 24;
-              return this.modelInstance.update({ check_times: check_times, check_times_total: check_times_total, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
+              return this.modelInstance.where({ user_id: userId }).update({ check_times: check_times, check_times_total: check_times_total, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
 
             case 24:
               _context.next = 26;
@@ -111,7 +111,7 @@ var _class = function (_think$controller$res) {
 
             case 28:
               _context.next = 30;
-              return this.modelInstance.update({ check_times: 1, check_times_total: 1, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
+              return this.modelInstance.where({ user_id: userId }).update({ check_times: 1, check_times_total: 1, last_visit_time: ['exp', 'CURRENT_TIMESTAMP()'] }, { user_id: userId });
 
             case 30:
               _context.next = 32;
@@ -146,7 +146,7 @@ var _class = function (_think$controller$res) {
 
   _class.prototype.historyAction = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-      var userId, _post, year, month, MonthHis;
+      var userId, _post, year, month, MonthHistory, checkInfo;
 
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
@@ -167,10 +167,15 @@ var _class = function (_think$controller$res) {
               return this.model('check_log').where('user_id=' + userId + ' AND DATE_FORMAT( check_time, \'%Y%m\' ) = ' + year + '' + month + ' ').getField('check_time');
 
             case 6:
-              MonthHis = _context2.sent;
-              return _context2.abrupt('return', this.success(MonthHis));
+              MonthHistory = _context2.sent;
+              _context2.next = 9;
+              return this.modelInstance.where({ user_id: userId }).getField('check_times,check_times_total,last_visit_time', true);
 
-            case 8:
+            case 9:
+              checkInfo = _context2.sent;
+              return _context2.abrupt('return', this.success({ checkInfo: checkInfo, MonthHistory: MonthHistory }));
+
+            case 11:
             case 'end':
               return _context2.stop();
           }

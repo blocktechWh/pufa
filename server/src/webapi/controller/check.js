@@ -26,10 +26,10 @@ export default class extends think.controller.rest {
       }else if(dateService.isYestday(last_visit_date)){
         let check_times = checkInfo.check_times===7?1:checkInfo.check_times+1;//7天清零
         let check_times_total = checkInfo.check_times_total+1;
-        await this.modelInstance.update({check_times,check_times_total,last_visit_time: ['exp', 'CURRENT_TIMESTAMP()']},{user_id:userId});
+        await this.modelInstance.where({user_id:userId}).update({check_times,check_times_total,last_visit_time: ['exp', 'CURRENT_TIMESTAMP()']},{user_id:userId});
         await this.model('user').where({'u_id':userId}).increment('point',check_times);
       }else{
-        await this.modelInstance.update({check_times:1,check_times_total:1,last_visit_time: ['exp', 'CURRENT_TIMESTAMP()']},{user_id:userId});//断签
+        await this.modelInstance.where({user_id:userId}).update({check_times:1,check_times_total:1,last_visit_time: ['exp', 'CURRENT_TIMESTAMP()']},{user_id:userId});//断签
         await this.model('user').where({'u_id':userId}).increment('point',1);
       }
     }
@@ -42,8 +42,9 @@ export default class extends think.controller.rest {
     let userId = think.service('auth').getUserId(this)
     if(!userId)return;
     let { year, month } = this.post();
-    let MonthHis = await this.model('check_log').where(`user_id=` + userId + ` AND DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');
-    return this.success(MonthHis);
+    let MonthHistory = await this.model('check_log').where(`user_id=` + userId + ` AND DATE_FORMAT( check_time, '%Y%m' ) = `+ year + '' + month + ` `).getField('check_time');
+    let checkInfo = await this.modelInstance.where({user_id:userId}).getField('check_times,check_times_total,last_visit_time',true);
+    return this.success({checkInfo,MonthHistory});
   }
 
 }

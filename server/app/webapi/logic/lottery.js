@@ -44,7 +44,7 @@ var _class = function (_think$logic$base) {
           switch (_context.prev = _context.next) {
             case 0:
               if (this.validate({
-                id: "int|required"
+                lotteryId: "int|required"
               })) {
                 _context.next = 2;
                 break;

@@ -43,6 +43,13 @@ var _class = function (_think$model$relation) {
                 model: 'user_lottery',
                 key: 'id',
                 fKey: 'lottery_id'
+            },
+            winnerInfo: {
+                type: think.model.HAS_ONE,
+                field: 'u_id,name,image_url',
+                model: 'user',
+                key: 'winner',
+                fKey: 'u_id'
             }
         };
     };
