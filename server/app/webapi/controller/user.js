@@ -166,6 +166,44 @@ var _class = function (_think$controller$res) {
     return loginAction;
   }();
 
+  _class.prototype.pointAction = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+      var user;
+      return _regenerator2.default.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return think.service('auth').getUser(this);
+
+            case 2:
+              user = _context3.sent;
+
+              if (user) {
+                _context3.next = 5;
+                break;
+              }
+
+              return _context3.abrupt('return');
+
+            case 5:
+              return _context3.abrupt('return', this.success({ point: user.point }));
+
+            case 6:
+            case 'end':
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+
+    function pointAction() {
+      return _ref3.apply(this, arguments);
+    }
+
+    return pointAction;
+  }();
+
   return _class;
 }(think.controller.rest);
 

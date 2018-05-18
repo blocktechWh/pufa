@@ -21,5 +21,13 @@ export default class extends think.logic.base {
       return this.fail('validate error', this.errors());
     }
   }
+
+  async infoAction(){
+    if(!this.validate({
+      lotteryId: "int|required"
+    })){
+      return this.fail('validate error', this.errors());
+    }
+  }
     
 }

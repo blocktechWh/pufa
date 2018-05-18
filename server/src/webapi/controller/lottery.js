@@ -82,4 +82,11 @@ export default class extends think.controller.rest {
     return this.success(my);
   }
 
+  async infoAction(){
+    let { lotteryId } = this.post();
+    let info = await this.modelInstance.where({id:lotteryId}).find();
+    return this.success(info);
+  }
+
+
 }

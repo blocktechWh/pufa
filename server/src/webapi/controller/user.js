@@ -43,4 +43,10 @@ export default class extends think.controller.rest {
     return this.success({token,user:{nickName, avatarUrl, point:userPoint}});
   }
 
+  async pointAction(){
+    let user = await think.service('auth').getUser(this)
+    if(!user)return;
+    return this.success({point:user.point});
+  }
+
 }

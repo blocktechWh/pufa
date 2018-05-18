@@ -97,6 +97,36 @@ var _class = function (_think$logic$base) {
     return joinAction;
   }();
 
+  _class.prototype.infoAction = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+      return _regenerator2.default.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              if (this.validate({
+                lotteryId: "int|required"
+              })) {
+                _context3.next = 2;
+                break;
+              }
+
+              return _context3.abrupt('return', this.fail('validate error', this.errors()));
+
+            case 2:
+            case 'end':
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+
+    function infoAction() {
+      return _ref3.apply(this, arguments);
+    }
+
+    return infoAction;
+  }();
+
   return _class;
 }(think.logic.base);
 

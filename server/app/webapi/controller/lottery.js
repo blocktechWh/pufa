@@ -328,6 +328,37 @@ var _class = function (_think$controller$res) {
     return myAction;
   }();
 
+  _class.prototype.infoAction = function () {
+    var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+      var _post3, lotteryId, info;
+
+      return _regenerator2.default.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _post3 = this.post(), lotteryId = _post3.lotteryId;
+              _context6.next = 3;
+              return this.modelInstance.where({ id: lotteryId }).find();
+
+            case 3:
+              info = _context6.sent;
+              return _context6.abrupt("return", this.success(info));
+
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6, this);
+    }));
+
+    function infoAction() {
+      return _ref6.apply(this, arguments);
+    }
+
+    return infoAction;
+  }();
+
   return _class;
 }(think.controller.rest);
 
